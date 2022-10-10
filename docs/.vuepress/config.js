@@ -1,6 +1,6 @@
 module.exports = {
   theme: "cosmos",
-  title: "IBC-Go",
+  title: "Nibiru Chain",
   locales: {
     "/": {
       lang: "en-US"
@@ -39,138 +39,117 @@ module.exports = {
         "key": "v1.1.0"
       },
       {
-        "label": "v1.2.0",
-        "key": "v1.2.0"
-      },
-      {
         "label": "v2.0.0",
         "key": "v2.0.0"
-      }      
+      }
     ],
     topbar: {
       banner: true
     },
-    sidebar: { 
+    sidebar: {
       auto: false,
       nav: [
-          {
-          title: "Using IBC-Go",
+        {
+          title: "About Nibiru",
           children: [
             {
               title: "Overview",
               directory: false,
-              path: "/ibc/overview.html"
-            }, 
+              path: "/about/intro.html"
+            },
             {
-              title: "Integration",
+              title: "Nibiru Blog",
+              path: "https://blog.nibiru.fi/"
+            },
+            {
+              title: "FAQ",
               directory: false,
-              path: "/ibc/integration.html"
-            },
-            {
-              title: "Applications",
-              directory: false,
-              path: "/ibc/apps.html"
-            },
-            {
-              title: "Middleware",
-              directory: true,
-              path: "/ibc/middleware"
-            },
-            {
-              title: "Upgrades",
-              directory: true,
-              path: "/ibc/upgrades"
-            },
-            {
-              title: "Governance Proposals",
-              directory: false,
-              path: "/ibc/proposals.html"
-            },
-            {
-              title: "Relayer",
-              directory: false,
-              path: "/ibc/relayer.html"
-            },
-            {
-              title: "Protobuf Documentation",
-              directory: false,
-              path: "/ibc/proto-docs.html"
-            },
-            {
-              title: "Roadmap",
-              directory: false,
-              path: "/roadmap/roadmap.html"
+              path: "/about/faq.html"
             },
           ]
         },
         {
-          title: "IBC Application Modules",
+          title: "Nibiru Ecosystem",
           children: [
             {
-              title: "Interchain Accounts",
-              directory: true,
-              path: "/apps",
-              children: [
-                {
-                    title: "Overview",
-                    directory: false,
-                    path: "/apps/interchain-accounts/overview.html"
-                }, 
-                {
-                  title: "Authentication Modules",
-                  directory: false,
-                  path: "/apps/interchain-accounts/auth-modules.html"
-                },
-                {
-                  title: "Active Channels",
-                  directory: false,
-                  path: "/apps/interchain-accounts/active-channels.html"
-                },
-                {
-                    title: "Integration",
-                    directory: false,
-                    path: "/apps/interchain-accounts/integration.html"
-                },
-                {
-                  title: "Parameters",
-                  directory: false,
-                  path: "/apps/interchain-accounts/parameters.html"
-                },
-                {
-                  title: "Transactions",
-                  directory: false,
-                  path: "/apps/interchain-accounts/transactions.html"
-                },
-            ]
+              title: "Nibi-Perps",
+              directory: false,
+              path: "/ecosystem/nibi-perps.html"
             },
-          ]
-        },
-        {
-          title: "Migrations",
-          children: [
+            {
+              title: "Nibi-Swap AMM",
+              directory: false,
+              path: "/ecosystem/nibi-swap.html"
+            },
+            {
+              title: "NUSD Stablecoin",
+              directory: false,
+              path: "/ecosystem/nusd-stablecoin.html"
+            },
+            {
+              title: "Price Feed Oracles",
+              directory: false,
+              path: "/ecosystem/price-feed-oracles.html"
+            },
             {
               title: "Governance",
               directory: true,
               path: "/nibi/gov"
             },
             {
-              title: "IBC-Go v1 to v2",
-              directory: false,
-              path: "/migrations/v1-to-v2.html"
-            },
-            {
-              title: "IBC-Go v2 to v3",
-              directory: false,
-              path: "/migrations/v2-to-v3.html"
+              title: "Block Explorer",
+              path: "https://explorer.testnet.nibiru.fi/"
             },
           ]
         },
         {
-          title: "Resources",
+          title: "Protocol",
           children: [
             {
-              title: "IBC Specification",
-              path: "https://github.com/cosmos/ibc"
+              title: "Specification Overview",
+              directory: false,
+              path: "/protocol/spec-overview.html"
+            },
+            {
+              title: "Command-Line Interface (CLI)",
+              directory: false,
+              path: "/protocol/cli.html"
+            },
+            {
+              title: "Module Reference",
+              directory: true,
+              path: "/protocol/x",
+            },
+            {
+              title: "Joining Testnet",
+              directory: false,
+              path: "/protocol/testnet.html"
+            },
+            {
+              title: "TypeScript SDK",
+              directory: false,
+              path: "/protocol/nibijs.html"
+            },
+            {
+              title: "Python SDK",
+              directory: false,
+              path: "/protocol/py-sdk.html"
+            },
+          ]
+        },
+        {
+          title: "Learn More",
+          path: "learn",
+          children: [
+            {
+              title: "Tokenomics",
+              directory: false,
+              path: "/learn/tokenomics.html"
+            },
+            {
+              title: "Glossary",
+              directory: false,
+              path: "/learn/GLOSSARY.html"
             },
           ]
         }
@@ -195,26 +174,26 @@ module.exports = {
         text: "Chat with IBC developers in <a href='https://discord.gg/W8trcGV' target='_blank'>Discord</a>."
       },
       textLink: {
-        text: "ibcprotocol.org",
-        url: "https://ibcprotocol.org"
+        text: "nibiru.fi",
+        url: "https://nibiru.fi"
       },
       services: [
         {
           service: "medium",
-          url: "https://blog.cosmos.network/"
+          url: "https://blog.nibiru.fi/"
         },
         {
           service: "twitter",
-          url: "https://twitter.com/cosmos"
+          url: "https://twitter.com/NibiruChain"
         },
         {
           service: "linkedin",
-          url: "https://www.linkedin.com/company/interchain-gmbh"
+          url: "https://www.linkedin.com/company/nibiruchain"
         },
-        {
-          service: "reddit",
-          url: "https://reddit.com/r/cosmosnetwork"
-        },
+        // {
+        //   service: "reddit",
+        //   url: "https://reddit.com/r/cosmosnetwork"
+        // },
         {
           service: "telegram",
           url: "https://t.me/cosmosproject"
