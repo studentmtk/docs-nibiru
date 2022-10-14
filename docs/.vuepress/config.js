@@ -1,3 +1,4 @@
+const BASE = "/docs-nibiru"
 module.exports = {
   theme: "cosmos",
   title: "Nibiru Chain",
@@ -6,7 +7,7 @@ module.exports = {
       lang: "en-US"
     },
   },
-  base: process.env.VUEPRESS_BASE || "/docs-nibiru",
+  base: process.env.VUEPRESS_BASE || BASE,
   head: [
     ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" }],
     // ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" }],
@@ -66,11 +67,11 @@ module.exports = {
       nav: [
         {
           title: "About Nibiru",
-          path: "about",
+          path: `${BASE}/about`,
           children: [
             {
               title: "Overview",
-              path: "/",
+              path: `${BASE}/`,
             },
             {
               title: "Nibiru Blog",
@@ -79,7 +80,7 @@ module.exports = {
             {
               title: "FAQ",
               directory: false,
-              path: "/about/faq.html"
+              path: `${BASE}/about/faq.html`
             },
           ]
         },
@@ -90,12 +91,12 @@ module.exports = {
             {
               title: "Nibi-Perps",
               directory: false,
-              path: "/ecosystem/nibi-perps.html"
+              path: `${BASE}/ecosystem/nibi-perps.html`
             },
             {
               title: "Nibi-Swap AMM",
               directory: false,
-              path: "/ecosystem/nibi-swap.html"
+              path: `${BASE}/ecosystem/nibi-swap.html`
             },
             {
               title: "NUSD Stablecoin",
