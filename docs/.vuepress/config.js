@@ -1,4 +1,3 @@
-const BASE = "/docs-nibiru"
 module.exports = {
   theme: "cosmos",
   title: "Nibiru Chain",
@@ -7,7 +6,7 @@ module.exports = {
       lang: "en-US"
     },
   },
-  base: process.env.VUEPRESS_BASE || BASE,
+  base: process.env.VUEPRESS_BASE || "/",
   head: [
     ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" }],
     // ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" }],
@@ -37,8 +36,8 @@ module.exports = {
     },
   },
   themeConfig: {
-    repo: "NibiruChain/docs-nibiru",
-    docsRepo: "NibiruChain/docs-nibiru",
+    repo: "VimDiesel-Cosmos/VimDiesel-Cosmos.github.io",
+    docsRepo: "VimDiesel-Cosmos/VimDiesel-Cosmos.github.io",
     docsDir: "docs",
     editLinks: true,
     label: "hub", // options: sdk, ibc, hub
@@ -67,11 +66,11 @@ module.exports = {
       nav: [
         {
           title: "About Nibiru",
-          path: `${BASE}/about`,
+          path: "about",
           children: [
             {
               title: "Overview",
-              path: `${BASE}/`,
+              path: "/",
             },
             {
               title: "Nibiru Blog",
@@ -80,7 +79,7 @@ module.exports = {
             {
               title: "FAQ",
               directory: false,
-              path: `${BASE}/about/faq.html`
+              path: "/about/faq.html"
             },
           ]
         },
@@ -91,12 +90,12 @@ module.exports = {
             {
               title: "Nibi-Perps",
               directory: false,
-              path: `${BASE}/ecosystem/nibi-perps.html`
+              path: "/ecosystem/nibi-perps.html"
             },
             {
               title: "Nibi-Swap AMM",
               directory: false,
-              path: `${BASE}/ecosystem/nibi-swap.html`
+              path: "/ecosystem/nibi-swap.html"
             },
             {
               title: "NUSD Stablecoin",
@@ -282,11 +281,11 @@ module.exports = {
             {
               title: "Contributing to the docs",
               url:
-                "https://github.com/NibiruChain/docs-nibiru/blob/main/docs/DOCS_README.md"
+                "https://github.com/NibiruChain/docs/blob/main/docs/DOCS_README.md"
             },
             {
               title: "Source code on GitHub",
-              url: "https://github.com/NibiruChain/docs-nibiru/"
+              url: "https://github.com/NibiruChain/docs/"
             }
           ]
         }
@@ -303,8 +302,7 @@ module.exports = {
     [
       "sitemap",
       {
-        hostname: "https://nibiruchain.github.io/docs-nibiru/"
-        // hostname: "https://docs.nibiru.fi"
+        hostname: "https://docs.nibiru.fi"
       }
     ]
   ]

@@ -11,7 +11,7 @@ git init
 git add . 
 git commit -am "deploy"
 git checkout -b gh-pages
-git push -u https://github.com/NibiruChain/docs-nibiru gh-pages --force
+git push -u https://github.com/VimDiesel-Cosmos/VimDiesel-Cosmos.github.io gh-pages --force
 rm -rf .git 
 cd ..
 
