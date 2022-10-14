@@ -35,9 +35,7 @@ While most perps exchanges are designed with off-chain order books, perp impleme
 * **Increase the number of unique traders on the platform.**
 * **Reduce the bleeding of the ecosystem fund**: One of the top priorities on the Nibiru Perps protocol it to keep the funding rates of the listed perps at parity to all other perpetual futures exchanges while monitoring the opportunity for arbitrageurs.
 
-Nibi-Perps is currently on private testnet. Here's a brief CLI demo.
-
-{% embed url="https://youtu.be/k-SBvGdYdng" %}
+Nibi-Perps is currently on private testnet.
 
 ## Mark Price and Index Price
 
