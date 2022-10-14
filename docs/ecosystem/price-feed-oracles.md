@@ -17,9 +17,16 @@ The Nibiru team sets up several price feeds through whitelisted `oracle` account
 
 Let’s denote the following variables to go into more detail:
 
-$$
-\begin{aligned} & t :\text{a block timestamp (Unix)} \\ & t_b :\text{the current block’s timestamp (Unix)} \\ & T :\text{the set of all block timestamps (Unix) from the past hour.} \\ & p_t :\text{the median of all valid, posted prices for the block at timestamp $t$ } \\ \end{aligned}
-$$
+<div align="center">
+
+|  Variable |  Description | 
+| :---: | ---  |
+| $t$ | a block timestamp (Unix) |
+| $t_b$ | the current block’s timestamp (Unix) |
+| $T$ | the set of all block timestamps (Unix) from the past hour. |
+| $p_t$ | the median of all valid, posted prices for the block at timestamp $t$ |
+
+</div>
 
 The time variables are Unix timestamps and, thus, integers between 0 and ∞.
 
@@ -41,8 +48,16 @@ Prices posted from different data sources come from different accounts (oracle a
 
 Let's say you have an asset like ATOM with price feeds on 3 different AMMs. The post price message could include reserve amounts or the dollar value of the reserves as a field, and we could combine each of the posted prices with the liquidity values to get a liquidity weighted price:
 
-$$
-\begin{aligned} & p_i :\text{posted price} \\ & \ell_i :\text{liquidity value} \\ \end{aligned} \\ \text{liquidityWeightedPrice} = \dfrac{ \sum_i p_i\cdot\ell_i }{ \sum_{i} \ell_i }
+<div align="center">
+
+|  Variable |  Description | 
+| :---: | ---  |
+| $p_i$ |  posted price |
+| $\ell_i$ |  liquidity value |
+
+</div>
+
+$$ \text{liquidityWeightedPrice} = \dfrac{ \sum_i p_i\cdot\ell_i }{ \sum_{i} \ell_i }
 $$
 
 This would ensure that the exchanges with the most liquidity would contribute contribute most strongly to the oracle price, helping protect against sudden price movements on markets with low liquidity.

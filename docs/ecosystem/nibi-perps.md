@@ -102,9 +102,9 @@ Virtual pools enable Nibiru to have **clear pricing rules.** Each perpetual futu
 
 ## Market Specific Parameters
 
-{% hint style="info" %}
+::: tip
 For the full specification of all parameters involved in Nibi-Perps, see the [`perp` module technical documentation](../cli/modules/perp.md#parameters-of-nibi-perps).
-{% endhint %}
+:::
 
 ### Trade Limit Ratio
 
@@ -176,9 +176,9 @@ The permissionless state of market creation can drive the protocol to in-solvenc
 
 The EF is is seeded at the genesis within an initial supply from the community token allocation. The EF doesn’t accrue inflation but instead increases its reserves from (1) the collection of transaction fees on perpetual swaps, (2) fees from liquidations, and (3) investment of excess capital deployed on the platform.
 
-{% hint style="info" %}
+::: tip
 You may see the Ecosystem Fund of Nibi-Perps referred to as the `PerpEF` in the technical documentation.
-{% endhint %}
+::: 
 
 Using these revenue streams, **the EF steps in to pay funding payments to correct the imbalance paid between long and short traders**. If the mark and index prices differ substantially with a large aggregate position size, the EF may pay too much in funding.
 

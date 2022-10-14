@@ -8,7 +8,7 @@ NUSD’s creation and annihilation mechanism is dependent on the prices obtained
 
 Nibiru aims more toward a fully decentralized model in which anyone can mint or burn NUSD, which can always be exchanged for an equivalent value in NIBI and collateral on the trading app. The first token Nibiru will accept as collateral is USDC.
 
-### **Minting and burning NUSD**
+### Minting and burning NUSD
 
 Users mint NUSD by placing NIBI and any accepted form of collateral into the system. In return, the protocol mints and gives an equivalent value in NUSD back to the user minus a small transaction fee. Similarly, an NUSD holder can **burn NUSD** in exchange for equivalent value of NIBI and collateral.
 
@@ -23,12 +23,14 @@ Nibiru’s collateral ratio changes in response to the price of NUSD on the open
 Nibiru adjusts the Collateral Ratio based on changes in liquidity, measuring NIBI liquidity against the total supply of NUSD. We define the **liquidity ratio (LR)** as follows:
 
 $$
-\texttt{LiquidityRatio} = \dfrac{ \texttt{marketCap}{\text{NIBI}}}{ \texttt{marketCap}{\text{NUSD}}}
+\text{LiquidityRatio} = \dfrac{ \text{marketCap}{\text{NIBI}}}{ \text{marketCap}{\text{NUSD}}}
 $$
 
-During sustained periods of net negative liquidity ratio change, the market signals that more collateral should back the system. This collateral within the system dampens the reflexive downward spirals that are more likely to occur in systems entirely reliant upon endogenous collateral. More NUSD can be redeemed with an increasingly smaller percentage impact on NIBI supply. As a result, the system can absorb more NIBI sell pressure from NUSD redemptions being sold without risking the potential for negative feedback spirals.
+During sustained periods of net-negative changes in the liquidity ratio, the market signals that more collateral should back the system. Using hard collateral (USDC) within the system dampens the reflexive downward spirals that are more likely to occur in systems entirely reliant upon endogenous collateral. More NUSD can be redeemed with an increasingly smaller percentage impact on NIBI supply. As a result, the system can absorb more NIBI sell pressure from the sale of tokens from NUSD redemptions without risking the potential for negative feedback spirals.
 
-The worst-case scenario for NUSD is if NUSD holders can drain all the collateral from the system through redemptions, leaving the remaining holders with insufficiently collateralized NUSD. This situation is only possible if NIBI has a CR that contradicts the true amount of collateral in its reserves. The CR is not designed to rapidly fluctuate so there will not be extended opportunities in which the CR vastly exceeds the actual percentage of collateral in the system.
+The worst-case scenario for NUSD is if NUSD holders can drain all the collateral from the system through redemptions, leaving the remaining holders with insufficiently collateralized NUSD. This situation is only possible if NIBI has a CR that contradicts the true amount of collateral in its reserves. 
+
+The CR is not designed to rapidly fluctuate, so there will not be extended opportunities in which the CR vastly exceeds the actual percentage of collateral in the system.
 
 If instead the liquidity ratio tends to increase for an extended period of time, the market has signaled NIBI has strong enough value to justify lowering the CR, which better facilitates scaling for NUSD.
 
@@ -52,13 +54,14 @@ collNeeded := collUSDValEnd - collUSDVal
 The caller is given bonus NIBI for bringing the value of the protocol's collateral up to the appropriate value as defined by `collRatioTarget`. This bonus rate is some percentage of the collateral value provided.
 
 Let:
+|  Term |  Definition   |
+| --- | --- |
+| `collNeeded` (sdk.Int) | Amount of collateral needed to reach the target `collRatio`. |
+| `priceColl` (sdk.Dec) | USD price of the collateral |
+| `priceNIBI` (sdk.Dec) | USD price of NIBI. |
+| `bonusRate` (sdk.Dec) | Defaults to 0.2% (20 bps). The bonus rate gives the caller an incentive to recollateralize Nibiru to the target `collRatioTarget`. |
 
-* `collNeeded` (sdk.Int): Amount of collateral needed to reach the target `collRatio`.
-* `priceColl` (sdk.Dec): USD price of the collateral
-* `priceNIBI` (sdk.Dec): USD price of NIBI.
-* `bonusRate` (sdk.Dec): Defaults to 0.2% (20 bps). The bonus rate gives the caller an incentive to recollateralize Nibiru to the target `collRatioTarget`.
-
-Thus, the caller receives an amount of NIBI, `nibiOut`:
+Thus, the caller receives an amount of NIBI, `nibiOut` such that:
 
 ```go
 nibiOut * priceNIBI = (collNeeded * priceColl) * (1 + bonusRate)
@@ -68,7 +71,6 @@ nibiOut = (collNeeded * priceColl) * (1 + bonusRate) / priceNIBI
 #### Implementation of `Recollateralize`
 
 See "collateral\_ratio.go" in the stablecoin module of [NibiruChain/nibiru](https://github.com/NibiruChain/nibiru/).
-
 
 
 ### Buybacks
@@ -90,6 +92,6 @@ Thus, if the collateral ratio, or `collRatio`, is less than 0.495, the an addres
 
 The protocol has an excess of collateral. Buybacks allow users to sell NIBI to the protocol in exchange for NUSD, meaning that Nibiru Chain is effectively buying back its shares. After this transfer, the NIBI purchased by protocol is burned. This raises the value of the NIBI token for all of its hodlers.
 
-{% hint style="info" %}
+::: tip
 Unlike `Recollateralize`, there is no bonus rate for this transaction.
-{% endhint %}
+:::

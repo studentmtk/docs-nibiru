@@ -1,16 +1,16 @@
----
-description: This section describes how to submit governance proposals on Nibiru.
----
+# Submitting Proposals
+<!-- omit in toc -->
 
-# Submitting Proposals                              <!-- omit in toc -->
+This section describes how to submit governance proposals on Nibiru. {synopsis}
 
 Any NIBI holder, whether bonded or unbonded, can submit proposals by sending a `TxGovProposal` transaction. This is possible using the `nibid` CLI. Each proposal type corresponds to a subcommand of `nibid tx gov submit-proposal`.
 
 #### Table of Contents
-- [Proposal Types](#proposal-types)
-  - [Whitelisting an oracle address with `add-oracle`](#whitelisting-an-oracle-address-with-add-oracle)
-  - [Create a virtual pool](#create-a-virtual-pool)
-- [Querying a proposal](#querying-a-proposal)
+- [Submitting Proposals](#submitting-proposals)
+  - [Proposal Types](#proposal-types)
+    - [Whitelisting an oracle address with `add-oracle`](#whitelisting-an-oracle-address-with-add-oracle)
+    - [Create a virtual pool](#create-a-virtual-pool)
+  - [Querying a proposal](#querying-a-proposal)
 
 ## Proposal Types
 

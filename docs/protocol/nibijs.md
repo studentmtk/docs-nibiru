@@ -1,65 +1,154 @@
-# ❓ FAQ
+# TypeScript SDK — nibijs
 
-Common questions about Nibiru and their answers {synopsis}
+The official TypeScript SDK for the Nibiru blockchain {synopsis}
 
-**FAQ Sections**
+<p align="center">
+<img src="https://raw.githubusercontent.com/NibiruChain/ts-sdk/main/img/nibijs.png" width="100%">
+</p>
 
-* [General FAQ](faq.md#--general-faq)
-* [NIBI FAQ](faq.md#--nibi-faq)
-* [Validator FAQ](faq.md#--validator-faq)
+<p align="center">
+</p>
 
-## ❓ — General FAQ
+<div style="display: flex; flex-direction: row; gap: 4px;">
 
-### What is Nibiru?
+<a target="_blank" href="https://www.npmjs.com/package/@nibiruchain/nibijs">
+  <img src="https://img.shields.io/npm/v/@nibiruchain/nibijs.svg?color=AE8CCD" style="height: 20px">
+</a>
+<a target="_blank" href="https://github.com/NibiruChain/ts-sdk/actions/workflows/tests.yaml">
+  <img src="https://github.com/NibiruChain/ts-sdk/actions/workflows/tests.yaml/badge.svg" style="height: 20px">
+</a>
+<a target="_blank" href="https://www.npmjs.com/package/@nibiruchain/nibijs">
+  <img src="https://img.shields.io/npm/dm/@nibiruchain/nibijs.svg?color=FFF3CD" style="height: 20px">
+</a>
+<a target="_blank" href="https://github.com/NibiruChain/ts-sdk/blob/main/LICENSE">
+  <img src="https://img.shields.io/npm/l/express.svg?color=050505" style="height: 20px">
+</a>
+<a target="_blank" href="https://discord.gg/sgPw8ZYfpQ">
+  <img src="https://dcbadge.vercel.app/api/server/sgPw8ZYfpQ?style=flat" style="height: 20px">
+</a>
 
-**Nibiru** is a sovereign proof-of-stake blockchain, open-source platform, and member of a family of interconnected blockchains that comprise the Cosmos Ecosystem. Nibiru unifies leveraged derivatives trading, spot trading, staking, and bonded liquidity provision into a seamless user experience, enabling users of over 40 blockchains to trade with leverage using a suite of composable decentralized applications.
+</div>
 
-### Why is the protocol called Nibiru?
+The NibiJS (`@nibiruchain/nibijs`) package makes it possible to interact with Nibiru from a Node.js or browser environment. `nibijs` provides simple abstractions for core data structures, serialization, key management, API requests, and the submission of transactions. 
 
-Nibiru associates closely with transition and diruption of an existing system.
+The `nibijs` source code can be found in the ["packages" directory](https://github.com/NibiruChain/ts-sdk/blob/main/packages).  The types and classes generated from Nibiru's `.proto` files are inside a separate `npm` package called `@nibiruchain/api`. 
 
-* [Nibiru (Babylonian astronomy)](https://en.wikipedia.org/wiki/Nibiru\_\(Babylonian\_astronomy\)): Nibiru translates to “crossing” or “point of transition”.
-* [Nibiru Cataclysm](https://en.wikipedia.org/wiki/Nibiru\_cataclysm): “... the name ‘Nibiru’ is derived from the works of the ‘ancient astronaut’ writer Zecharia Sitchin and has interpretations Babylonian and Sumerian mythology...“
+#### Table of Contents
+- [TypeScript SDK — nibijs](#typescript-sdk--nibijs)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Codebase structure](#codebase-structure)
+  - [Development Quick Start](#development-quick-start)
+  - [🔓 License](#-license)
 
-### How can I get involved?
+To learn more about Nibiru, see [docs.nibiru.fi](https://docs.nibiru.fi) 
 
-* You can try out any of the protocols by following the [testnet instructions](broken-reference).
-* Coming soon: You can try out any of the protocols through their corresponding web applications at [app.nibiru.fi](https://app.nibiru.fi).
+---
 
-## ❓ — NIBI FAQ
+## Installation 
 
-### What is NIBI token used for?
+[@nibiruchain/nibijs][npm-nibijs] is available on the npm registry.
 
-The security of the Nibiru blockchain relies on a set of validators to commit new blocks and participate in Tendermint BFT consensus by broadcasting votes that contain cryptographic signatures signed by each validator's private key. Validators stake **NIBI**, the protocol's native token used for gas, governance, and "mining". Users can delegate NIBI to validators that record and verify transactions in exchange for rewards.
+[npm-nibijs]: https://www.npmjs.com/package/@nibiruchain/nibijs
 
-### Where can I buy NIBI and NUSD?
+```
+npm install @nibiruchain/nibijs # or yarn add
+```
 
-You simply need to have a [Keplr wallet](https://www.keplr.app/) to purchase NIBI and NUSD. This will also enable you to move assets between IBC-enabled blockchains. NIBI and NUSD can be purchased from liquidity pools on Nibi-Swap. You can also mint NUSD directly with USDC.
+## Usage 
 
-### How is the NUSD supply created?
+The entrypoint for `nibijs` is the `Sdk` object, which is meant to mimic the root of a command line interface. It can be used for both queries and transactions.
 
-Users mint NUSD by placing NIBI and any accepted form of collateral (such as USDC) into the system. In return, the protocol mints and gives an equivalent value in NUSD back to the user minus a small transaction fee. Similarly, an NUSD holder can **burn NUSD** in exchange for equivalent value of NIBI and collateral. This process is described in detail on the [Nibiru Stablecoin - NUSD](../content/stablecoin.md) page.
+#### Example: Querying a block 
 
-### What is the release schedule of NIBI?
+```js
+import { Testnet, newSdk } from "@nibiruchain/nibijs"
+const sdk = newSdk(Testnet, myMnemonic)
+const blockHeight = 1
+const block = sdk.tmClient.block(blockHeight)
+```
 
-The token release schedule is described in the [Tokenomics page](../content/tokenomics.md).
+#### Example: Sending funds
 
-### Where can I go to get other questions answered?
+```js
+import { Testnet, newSdk, newCoins, Coin } from "@nibiruchain/nibijs"
+const sdk = newSdk(Testnet, myMnemonic)
+const tokens: Coin[] = newCoins(5, "unibi")
+const toAddr: string = "..." // bech32 address of the receiving party
+let txResp = sdk.tx.sendTokens(toAddr, tokens)
+```
 
-The best place to get questions answered quickly is the [Nibiru Discord](https://discord.gg/cCbfXatEYs). For suggestions, issues, and feature requests on specific applications, the team is also response on GitHub: [github.com/NibiruChain](https://github.com/NibiruChain).
+#### Example: Transaction with arbitrary messages
 
-***
+```js
+import { Testnet, newSdk, newCoins, Coin, DeliverTxResponse } from "@nibiruchain/nibijs"
+import { Msg } from "@nibiruchain/nibijs/msg"
 
-## ❓ — Validator FAQ
+const sdk = newSdk(Testnet, myMnemonic)
+let msgs: TxMessage[] = [
+  Msg.perp.openPosition({
+    tokenPair: pair,
+    baseAssetAmountLimit: "0",
+    leverage: "1",
+    quoteAssetAmount: "10",
+    sender: fromAddr,
+    side: Side.BUY,
+  }),
+  Msg.perp.addMargin({
+    sender: fromAddr,
+    tokenPair: pair,
+    margin: newCoin("20", "unusd"),
+  }),
+]
+let txResp: DeliverTxResponse = await sdk.tx.signAndBroadcast(...msgs)
+```
 
-### What is a validator?
+## Codebase structure
 
-Validators are responsible for committing new blocks and participating in consensus by broadcasting votes that contain cryptographic signatures signed by each validator's private key.
+| Directories of `@nibiruchain/nibijs` | Purpose/Utility |
+| :-------- | -------- |
+| `common` | home to several commonly needed types, constants and configurations such as Network.
+| `msg`    | Implements functions for creating messages (`Msg`s). These are objects that trigger state-transitions and get wrapped into transactions. 
+| `query`  | For querying state via the consensus engine of a full-node and the application blockchain interface (ABCI).
+| `tx`     | For signing and to submitting transactions given a set of `Msg` objects.
+| `wallet` | A simple wrapper around the Keplr wallet. This module will grow as support is added for other wallets (like MetaMask). |
 
-### What does it mean to stake or delegate?
+`@nibiruchain/api` provides types generated from the protocol buffers of the Cosmos-SDK, Tendermint Core, and Nibiru Chain. For most use cases, it won't be necessary to interact with this layer.
 
-Validators stake NIBI Users can stake without being a validator by delegating NIBI Commission Staking rewards
+---
 
-### How can I become a validator?
+<!-- 
+## 📜 Contribution Guidelines  
 
-There are instructions on how to set up various kinds of nodes in the [validator docs](../developer-docs/validators.md). Reach out to the team on [Discord](https://discord.gg/cCbfXatEYs) if you need assistance.
+TODO
+-->
+
+## Development Quick Start 
+
+1. First install yarn.
+    ```sh
+    npm install -g yarn
+    ```
+
+2. Then, install package dependencies. At the root of the repository, run 
+    ```sh
+    yarn 
+    ```
+3. Lastly, compile the code in each package.
+    ```sh
+    yarn build
+    ```
+
+See [HACKING.md](./HACKING.md) for the full development guide. 
+
+---
+
+## 🔓 License
+
+This software is licensed under the MIT license. See [LICENSE](./LICENSE) for full disclosure.
+
+© 2022 Nibi, Inc.
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/NibiruChain/ts-sdk/main/img/nibi-logo-onwhite.png" style="width: 200px">
+</p>

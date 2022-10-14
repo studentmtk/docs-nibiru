@@ -48,7 +48,7 @@ The token release schedule is described in the [Tokenomics page](../content/toke
 
 ### Where can I go to get other questions answered?
 
-The best place to get questions answered quickly is the [Nibiru Discord](https://discord.gg/cCbfXatEYs). For suggestions, issues, and feature requests on specific applications, the team is also response on GitHub: [github.com/NibiruChain](https://github.com/NibiruChain).
+The best place to get questions answered quickly is the [Nibiru Discord](https://discord.gg/sgPw8ZYfpQ). For suggestions, issues, and feature requests on specific applications, the team is also response on GitHub: [github.com/NibiruChain](https://github.com/NibiruChain).
 
 ***
 

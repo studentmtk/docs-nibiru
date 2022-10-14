@@ -66,6 +66,7 @@ module.exports = {
       nav: [
         {
           title: "About Nibiru",
+          path: "about",
           children: [
             {
               title: "Overview",
@@ -84,6 +85,7 @@ module.exports = {
         },
         {
           title: "Nibiru Ecosystem",
+          path: "ecosystem",
           children: [
             {
               title: "Nibi-Perps",
@@ -118,6 +120,7 @@ module.exports = {
         },
         {
           title: "Protocol",
+          path: "protocol",
           children: [
             {
               title: "Specification Overview",
@@ -133,6 +136,11 @@ module.exports = {
               title: "Module Reference",
               directory: true,
               path: "/protocol/x",
+            },
+            {
+              title: "Nibiru Protobuf",
+              directory: true,
+              path: "/protocol/protobuf",
             },
             {
               title: "Joining Testnet",
@@ -227,7 +235,7 @@ module.exports = {
         // }
       ],
       smallprint:
-        "The development of Nibiru is led primarily by [Nibi, Inc.](https://interchain.berlin/). Funding for this development comes primarily from the Interchain Foundation, a Swiss non-profit.",
+        "[Terms and Conditions](/terms-and-conditions-nibiru.pdf) | [Privacy Policy](/privacy-policy-nibiru.pdf) | The development of [Nibiru](https://github.com/NibiruChain) is led primarily by Nibi, Inc.",
       links: [
         {
           title: "Documentation",
