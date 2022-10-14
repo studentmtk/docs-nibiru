@@ -36,8 +36,8 @@ module.exports = {
     },
   },
   themeConfig: {
-    repo: "NibiruChain/docs",
-    docsRepo: "NibiruChain/docs",
+    repo: "NibiruChain/docs-nibiru",
+    docsRepo: "NibiruChain/docs-nibiru",
     docsDir: "docs",
     editLinks: true,
     label: "hub", // options: sdk, ibc, hub
@@ -281,11 +281,11 @@ module.exports = {
             {
               title: "Contributing to the docs",
               url:
-                "https://github.com/NibiruChain/docs/blob/main/docs/DOCS_README.md"
+                "https://github.com/NibiruChain/docs-nibiru/blob/main/docs/DOCS_README.md"
             },
             {
               title: "Source code on GitHub",
-              url: "https://github.com/NibiruChain/docs/"
+              url: "https://github.com/NibiruChain/docs-nibiru/"
             }
           ]
         }
@@ -302,7 +302,8 @@ module.exports = {
     [
       "sitemap",
       {
-        hostname: "https://docs.nibiru.fi"
+        hostname: "https://nibiruchain.github.io/docs-nibiru/"
+        // hostname: "https://docs.nibiru.fi"
       }
     ]
   ]
