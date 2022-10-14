@@ -37,8 +37,7 @@ And between each of these pairs exists a spot price.
 
 Spot price is the instantaneous price at which a swap occurs. It is computed as the ratio of the token balances normalized by token weight:
 
-$$
-\begin{aligned}
+$$ \begin{aligned}
 &\mathcal{B}_{\text{in}}: \text{amount of token in} \\ 
 &\mathcal{W}_{\text{in}}: \text{weight of token in} \\ 
 &\mathcal{B}_{\text{out}}: \text{amount of token out} \\ 
