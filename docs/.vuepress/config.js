@@ -65,28 +65,12 @@ module.exports = {
       auto: false,
       nav: [
         {
-          title: "About Nibiru",
-          path: "about",
+          title: "Nibiru Ecosystem",
           children: [
             {
               title: "Overview",
               path: "/",
             },
-            {
-              title: "Nibiru Blog",
-              path: "https://blog.nibiru.fi/"
-            },
-            {
-              title: "FAQ",
-              directory: false,
-              path: "/about/faq.html"
-            },
-          ]
-        },
-        {
-          title: "Nibiru Ecosystem",
-          path: "ecosystem",
-          children: [
             {
               title: "Nibi-Perps",
               directory: false,
@@ -113,49 +97,68 @@ module.exports = {
               path: "/ecosystem/gov"
             },
             {
+              title: "Nibiru Blog",
+              path: "https://blog.nibiru.fi/"
+            },
+            {
               title: "Block Explorer",
               path: "https://explorer.testnet.nibiru.fi/"
             },
           ]
         },
         {
-          title: "Protocol",
-          path: "protocol",
+          title: "Protocol Development",
+          path: "dev",
           children: [
             {
-              title: "Specification Overview",
+              title: "Development Overview",
               directory: false,
-              path: "/protocol/spec-overview.html"
+              path: "/dev/"
             },
             {
               title: "Command-Line Interface (CLI)",
               directory: false,
-              path: "/protocol/cli.html"
+              path: "/dev/cli.html"
             },
             {
               title: "Module Reference",
               directory: true,
-              path: "/protocol/x",
+              path: "/dev/x",
             },
             {
               title: "Nibiru Protobuf",
               directory: true,
-              path: "/protocol/protobuf",
-            },
-            {
-              title: "Joining Testnet",
-              directory: false,
-              path: "/protocol/testnet.html"
+              path: "/dev/protobuf",
             },
             {
               title: "TypeScript SDK — nibijs",
               directory: false,
-              path: "/protocol/nibijs.html"
+              path: "/dev/nibijs.html"
             },
             {
               title: "Python SDK",
               directory: false,
-              path: "/protocol/py-sdk.html"
+              path: "/dev/py-sdk.html"
+            },
+          ]
+        },
+        {
+          title: "Running Nodes",
+          children: [
+            // {
+            //   title: "Nodes Overview",
+            //   directory: false,
+            //   path: "/run-nodes/"
+            // },
+            {
+              title: "Nibid Setup",
+              directory: false,
+              path: "/run-nodes/nibid-binary.html"
+            },
+            {
+              title: "Joining Testnet",
+              directory: true,
+              path: "/run-nodes/testnet"
             },
           ]
         },
@@ -167,6 +170,11 @@ module.exports = {
               title: "Tokenomics",
               directory: false,
               path: "/learn/tokenomics.html"
+            },
+            {
+              title: "FAQ",
+              directory: false,
+              path: "/learn/faq.html"
             },
             {
               title: "Glossary",
