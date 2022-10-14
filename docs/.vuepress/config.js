@@ -17,13 +17,30 @@ module.exports = {
     // ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon-svg.svg" }],
     ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon.ico" }],
     ['link', { rel: "apple-touch-icon-precomposed", href: "/apple-touch-icon-precomposed.png" }],
+    ["link",
+      {
+        rel: "stylesheet",
+        href: "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css",
+      },
+    ],
+    ["link",
+      {
+        rel: "stylesheet",
+        href: "https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css",
+      },
+    ],
   ],
+  markdown: {
+    extendMarkdown: (md) => {
+      md.use(require("markdown-it-katex"));
+    },
+  },
   themeConfig: {
-    repo: "cosmos/ibc-go",
-    docsRepo: "cosmos/ibc-go",
+    repo: "NibiruChain/docs",
+    docsRepo: "NibiruChain/docs",
     docsDir: "docs",
     editLinks: true,
-    label: "ibc",
+    label: "hub", // options: sdk, ibc, hub
     // TODO
     //algolia: {
     //  id: "BH4D9OD16A",
@@ -123,7 +140,7 @@ module.exports = {
               path: "/protocol/testnet.html"
             },
             {
-              title: "TypeScript SDK",
+              title: "TypeScript SDK — nibijs",
               directory: false,
               path: "/protocol/nibijs.html"
             },
@@ -163,7 +180,7 @@ module.exports = {
       },
       github: {
         title: "Found an Issue?",
-        text: "Help us improve this page by suggesting edits on GitHub."
+        text: "Help us improve this page POGGERS by suggesting edits on GitHub."
       }
     },
     footer: {
