@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-rm -rf modules
+echo "Nothing to do in post.sh"
