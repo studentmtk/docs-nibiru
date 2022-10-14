@@ -1,8 +1,12 @@
 # Production deployment
+
+BUILD_PATH=".vuepress/dist"
+
 npm run build
 # echo nibiru.fi > dist/CNAME
 
-cd dist 
+cd $BUILD_PATH 
+touch .nojekyll
 git init 
 git add . 
 git commit -am "deploy"
