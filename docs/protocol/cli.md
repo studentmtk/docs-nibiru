@@ -1,53 +1,70 @@
-# ✨ About Nibiru
+# Command-Line Interface
 
-A comprehensive guide on understanding the Nibiru Ecosystem. {synopsis}
+A general introduction to the nibid cli along with a brief description of commands and flags {synopsis}
 
-## What is Nibiru?
+## Introduction
 
-**Nibiru** is a sovereign proof-of-stake blockchain, open-source platform, and member of a family of interconnected blockchains that comprise the Cosmos Ecosystem.&#x20;
+`nibid` is a command line client for the Nibiru network. Nibiru users can use `nibid` to send transactions to the Nibiru network and query the blockchain data.
 
-Nibiru unifies leveraged derivatives trading, spot trading, staking, and bonded liquidity provision into a seamless user experience, enabling users of over 40 blockchains to trade with leverage using a suite of composable decentralized applications.
+::: tip
+See ["Joining Testnet"](./testnet.md) for instructions on installing `nibid`.
+:::
 
-## Nibiru Ecosystem
+### Working Directory
 
-{% content-ref url="concepts/perps-overview.md" %}
-[perps-overview.md](concepts/perps-overview.md)
-{% endcontent-ref %}
+The default working directory for the `nibid` is `$HOME/.nibid`, which is mainly used to store configuration files and blockchain data. The Nibiru `key` data is saved in the working directory of `nibid`. You can also specify the `nibid` working directory by using the `--home` flag when executing `nibid`.
 
-A perpetual futures exchange where users can take leveraged exposure and trade on a plethora of assets — completely on-chain, completely non-custodially, and with minimal gas fees.
+### Connecting to a Full-Node
 
-{% content-ref url="concepts/amm.md" %}
-[amm.md](concepts/amm.md)
-{% endcontent-ref %}
+By default, `nibid` uses `tcp://localhost:26657` as the RPC address to connect to the Nibiru network. This default configuration assumes that the machine executing `nibid` is running as a full-node.
 
-**Nibi-Swap** is an automated market maker protocol for multichain assets. This application gives users access to swaps, pools, and bonded liquidity gauges.
+The RPC address can be specified to connect to any full-node with an exposed RPC port by adding the `--node` flag when executing `nibid`
 
-{% content-ref url="concepts/stablecoin.md" %}
-[stablecoin.md](concepts/stablecoin.md)
-{% endcontent-ref %}
+### Global Flags
 
-Nibiru powers a two-token economic model, where NIBI is the staking and utility token for the protocol and NUSD is a capital-efficient, partially collateralized stablecoin for the protocol.
+#### GET Commands
 
-{% content-ref url="concepts/price-feed-oracles.md" %}
-[price-feed-oracles.md](concepts/price-feed-oracles.md)
-{% endcontent-ref %}
+All GET commands have the following global flags:
 
-Nibiru accurately prices assets using a native, system of decentralized [oracles](content/price-feed-oracles.md), and communicates with other Cosmos layer-1 chains using the [Inter-Blockchain Communication (IBC)](https://github.com/cosmos/ibc) protocol.
+| Name, shorthand | type   | Default Value | Description                          |
+| --------------- | ------ | ------------- | ------------------------------------ |
+| --chain-id      | string |               | The network Chain ID                 |
+| --home          | string | $HOME/.nibid  | Directory for config and data        |
+| --trace         | string |               | Print out full stack trace on errors |
+| --log\_format   | string | plain         | Logging format (json \| plain)       |
 
-***
+#### POST Commands
 
-![](.gitbook/assets/cosmwasm-ibc-box.svg)
+All POST commands have the following global flags:
 
-### CosmWasm Integration
+| Name, shorthand   | type   | Default               | Description
+| ----------------- | ------ | --------------------- | -------------------------------------------------------------------------------------------------------------- |
+| --account-number  | int    | 0                     | `AccountNumber` to sign the tx
+| --broadcast-mode  | string | sync                  | Transaction broadcasting mode (sync \| async \| block)
+| --dry-run         | bool   | false                 | Ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it                        |
+| --fees            | string |                       | Fees to pay along with transaction
+| --from            | string |                       | Name of private key with which to sign
+| --gas             | string | 200000                | Gas limit to set per-transaction; set to "simulate" to calculate required gas automatically                    |
+| --gas-adjustment  | float  | 1                     | Adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set |
+| --gas-prices      | string |                       | Gas prices in decimal format to determine the transaction fee                                                  |
+| --generate-only   | bool   | false                 | Build an unsigned transaction and write it to STDOUT 
+| --help, -h        | string |                       | Print help message
+| --keyring-backend | string | os                    | Select keyring's backend
+| --ledger          | bool   | false                 | Use a connected Ledger device
+| --memo            | string |                       | Memo to send along with transaction
+| --node            | string | tcp://localhost:26657 | specifies `<host>:<port>` for the Tendermint RPC interface endpoint for this chain                                                     |
+| --offline         | string |                       | Offline mode (does not allow any online functionality)
+| --sequence        | int    | 0                     | Sequence number to sign the tx
+| --sign-mode       | string |                       | Choose sign mode (direct \| amino-json), this is an advanced feature                                           |
+| --trust-node      | bool   | true                  | Don't verify proofs for responses
+| --yes             | bool   | true                  | Skip tx broadcasting prompt confirmation
+| --chain-id        | string |                       | The network Chain ID
+| --home            | string | $HOME/.nibid          | Directory for config and data
+| --trace           | string |                       | Print out full stack trace on errors
 
-Nibiru will also act as a permission-less and censorship resistant platform for developers to deploy smart contracts in Go and Rust.
+### Module Commands
 
-### Inter-Blockchain Communication Protocol (IBC)
-
-Nibiru is IBC compliant at genesis and connected over 40 blockchains. IBC enables secure and permissionless transfers of funds between blockchains in addition to cross-chain computation and transfer of arbitrary data. This includes cross-chain smart contract calls, fee payments, NFTs, and fungible token transfers. IBC is not reliant on a multi-sig or centralized bridging solution.
-
-The security of the Nibiru blockchain relies on a set of validators to commit new blocks and participate in Tendermint BFT consensus by brodcasting votes that contain cryptographic signatures signed by each validator's private key. Validators stake **NIBI**, the protocol's native token used for gas, governance, and "mining". Users can delegate NIBI to validators that record and verify transactions in exchange for rewards.
-
-### Contribution guidelines for this documentation
-
-You can contribute to improve this documentation by submitting a [GitHub](https://github.com/NibiruChain/docs) issue or opening a pull request.
+| **Subcommand**                   | **Description**                                           |
+| -------------------------------- | --------------------------------------------------------- |
+| [perp](./x/perp.md#cli)   | Perp subcommands for querying and opening positions, etc. |
+| [vpool](./x/vpool.md#cli) | Vpool subcommands for querying vpools.                    |

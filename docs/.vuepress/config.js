@@ -30,18 +30,10 @@ module.exports = {
     //  index: "ibc-go"
     //},
     versions: [
-      {
-        "label": "main",
-        "key": "main"
-      },
-      {
-        "label": "v1.1.0",
-        "key": "v1.1.0"
-      },
-      {
-        "label": "v2.0.0",
-        "key": "v2.0.0"
-      }
+      // {
+      //   "label": "main",
+      //   "key": "main"
+      // },
     ],
     topbar: {
       banner: true
@@ -54,8 +46,7 @@ module.exports = {
           children: [
             {
               title: "Overview",
-              directory: false,
-              path: "/about/intro.html"
+              path: "/",
             },
             {
               title: "Nibiru Blog",
@@ -94,7 +85,7 @@ module.exports = {
             {
               title: "Governance",
               directory: true,
-              path: "/nibi/gov"
+              path: "/ecosystem/gov"
             },
             {
               title: "Block Explorer",
@@ -160,8 +151,8 @@ module.exports = {
       editLink: true,
       chat: {
         title: "Discord",
-        text: "Chat with IBC developers on Discord.",
-        url: "https://discordapp.com/channels/669268347736686612",
+        text: "Chat with Nibiru developers on Discord.",
+        url: "https://discord.gg/sgPw8ZYfpQ",
         bg: "linear-gradient(225.11deg, #2E3148 0%, #161931 95.68%)"
       },
       github: {
@@ -171,7 +162,7 @@ module.exports = {
     },
     footer: {
       question: {
-        text: "Chat with IBC developers in <a href='https://discord.gg/W8trcGV' target='_blank'>Discord</a>."
+        text: "Chat with Nibiru developers on <a href='https://discord.gg/sgPw8ZYfpQ' target='_blank'>Discord</a>."
       },
       textLink: {
         text: "nibiru.fi",
@@ -194,50 +185,54 @@ module.exports = {
         //   service: "reddit",
         //   url: "https://reddit.com/r/cosmosnetwork"
         // },
-        {
-          service: "telegram",
-          url: "https://t.me/cosmosproject"
-        },
-        {
-          service: "youtube",
-          url: "https://www.youtube.com/c/CosmosProject"
-        }
+        // {
+        //   service: "telegram",
+        //   url: "https://t.me/cosmosproject"
+        // },
+        // {
+        //   service: "youtube",
+        //   url: "https://www.youtube.com/c/CosmosProject"
+        // }
       ],
       smallprint:
-        "The development of IBC-Go is led primarily by [Interchain GmbH](https://interchain.berlin/). Funding for this development comes primarily from the Interchain Foundation, a Swiss non-profit.",
+        "The development of Nibiru is led primarily by [Nibi, Inc.](https://interchain.berlin/). Funding for this development comes primarily from the Interchain Foundation, a Swiss non-profit.",
       links: [
         {
           title: "Documentation",
           children: [
             {
+              title: "Tendermint Core",
+              url: "https://docs.tendermint.com"
+            },
+            {
               title: "Cosmos SDK",
               url: "https://docs.cosmos.network"
             },
             {
-              title: "Cosmos Hub",
-              url: "https://hub.cosmos.network"
+              title: "Inter-Blockchain Communication (IBC)",
+              url: "https://ibc.cosmos.network/"
             },
-            {
-              title: "Tendermint Core",
-              url: "https://docs.tendermint.com"
-            }
           ]
         },
         {
           title: "Community",
           children: [
             {
-              title: "Cosmos blog",
-              url: "https://blog.cosmos.network"
+              title: "🌴 Link Tree",
+              url: "https://linktr.ee/nibiruchain"
             },
             {
-              title: "Forum",
-              url: "https://forum.cosmos.network"
+              title: "Discord Chat",
+              url: "https://discord.gg/sgPw8ZYfpQ"
             },
             {
-              title: "Chat",
-              url: "https://discord.gg/W8trcGV"
-            }
+              title: "Nibiru blog",
+              url: "https://blog.nibiru.fi/"
+            },
+            {
+              title: "Twitter",
+              url: "https://twitter.com/NibiruChain"
+            },
           ]
         },
         {
@@ -246,11 +241,11 @@ module.exports = {
             {
               title: "Contributing to the docs",
               url:
-                "https://github.com/cosmos/ibc-go/blob/main/docs/DOCS_README.md"
+                "https://github.com/NibiruChain/docs/blob/main/docs/DOCS_README.md"
             },
             {
               title: "Source code on GitHub",
-              url: "https://github.com/cosmos/ibc-go/"
+              url: "https://github.com/NibiruChain/docs/"
             }
           ]
         }
@@ -267,7 +262,7 @@ module.exports = {
     [
       "sitemap",
       {
-        hostname: "https://ibc.cosmos.network"
+        hostname: "https://docs.nibiru.fi"
       }
     ]
   ]

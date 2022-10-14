@@ -12,13 +12,11 @@ Nibiru will have a fully diluted token supply of 1.5B tokens. The tokens will be
 
 The token supply is distributed over an 8-year time frame with the following release schedule.
 
-<!-- ![](../img/token\_release\_area.svg) TODO -->
+![](../img/token\_release\_area.svg) 
 
 As more tokens are released into the ecosystem, Nibiru will be governed primarily by the community.
 
-<!-- ![](../img/final\_token\_supply.svg) TODO -->
-
-<!--  {synopsis} -->
+![](../img/final\_token\_supply.svg) 
 
 ## Team (21%)
 
