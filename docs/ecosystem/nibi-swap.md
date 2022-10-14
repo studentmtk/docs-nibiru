@@ -16,10 +16,17 @@ How are pools created?
 
 Pools on Nibi-Swap can include more than two assets with differing token weights. From the quantity and normalized weight of each asset, we compute a **swap invariant**, `k`.
 
-$$
-\begin{aligned}
-&\mathcal{W}_n :\text{normalized weight of token $n$ } \\ &\mathcal{Q}_n :\text{quantity of token $n$ in the pool} \\ &k :\text{the swap invariant } \\ \end{aligned} \\ \prod\limits_{n=1}^t \mathcal{Q}_n^{\mathcal{W}_n} = k.
-$$
+<div align="center">
+
+|  Variable |  Description | 
+| :---: | ---  |
+| $\mathcal{W}_n$  | normalized weight of token $n$ |
+| $\mathcal{Q}_n$  | quantity of token $n$ in the pool |
+| $k$  | the swap invariant |
+
+</div>
+
+$$ \prod\limits_{n=1}^t \mathcal{Q}_n^{\mathcal{W}_n} = k. $$
 
 For a given pool, the sum of the normalized weights must equal 1. The swap invariant `k` does not change when users swap assets. It only changes when a **liquidity provider (LP)** adds or removes liquidity. Each pool contains `t` tokens. Thus, the number of trading pairs is equal to the number of combinations of size 2:
 
@@ -33,14 +40,19 @@ And between each of these pairs exists a spot price.
 
 Spot price is the instantaneous price at which a swap occurs. It is computed as the ratio of the token balances normalized by token weight:
 
+<div align="center">
+
+|  Variable |  Description | 
+| :---: | ---  |
+| $\mathcal{B}_{\text{in}}$  | amount of token in |
+| $\mathcal{W}_{\text{in}}$  | weight of token in |
+| $\mathcal{B}_{\text{out}}$  | amount of token out |
+| $\mathcal{W}_{\text{out}}$  | weight of token out |
+
+</div>
+
 $$
-\begin{aligned}
-&\mathcal{B}_{\text{in}}: \text{amount of token in} \\ 
-&\mathcal{W}_{\text{in}}: \text{weight of token in} \\ 
-&\mathcal{B}_{\text{out}}: \text{amount of token out} \\ 
-&\mathcal{W}_{\text{out}}: \text{weight of token out} 
-\end{aligned} \\ 
-\text{SpotPrice}_{\text{in$\to$ out}} = \frac{(\mathcal{Q}_{in}/\mathcal{W}_{in})}{(\mathcal{Q}_{out}/\mathcal{W}_{out})} 
+\text{SpotPrice}_{\text{in}\to\text{out}} = \frac{(\mathcal{Q}_{in}/\mathcal{W}_{in})}{(\mathcal{Q}_{out}/\mathcal{W}_{out})} 
 $$
 
 If the asset reserse are not modified by liquidity providers, then `k` remains constant and the price changes solely based on trades since the asset weights also remain constant. This ensures that the price of the asset bought increases while the price of the asset sold decreases. The arbitrage opportunities guarantee that the prices offered by the pools move in conjunction with the rest of the market.
@@ -75,9 +87,9 @@ totalShares=1000,  Reserves{200 TokenA, 40 TokenB}, with equal weights k=8000
 totalShares=1100, sharesOut=100, Reserves{220 TokenA, 44 TokenB}, k=9,680
 -->
 
-{% hint style="info" %}
+::: tip
 A Cosmos coin, or `sdk.Coin`, defines a token with a denomination and an amount. IBC vouchers, native staking assets, and LP shares are all Cosmos coins. 
-{% endhint %}
+:::
 
 ## Stableswaps
 
@@ -92,16 +104,21 @@ $$
 
 The stableswap invariant operates like a constant-price curve when a portfolio of assets is balanced and tends toward behaving like a constant-product curve if the tokens lose peg.
 
-*D* denotes the sum of all token quantities when they have an equal price.  
+$D$ denotes the sum of all token quantities when they have an equal price.  
+
+<div align="center">
+
+|  Variable |  Description | 
+| :---: | ---  |
+| $A$  | amplification coefficient |
+| $\{x_i\}$  | set of coins |
+
+</div>
 
 $$
-\begin{aligned}
-&A: \text{amplification coefficient}  \\
-&\{x_i\}: \text{set of coins} \\
-\end{aligned}\\ 
 At^t \left( \sum_{i=1}^t x_i \right) + D = ADt^t + \frac{D^{t+1}}{t^t\left( \prod\limits_{i=1}^t x_i \right) } 
 $$
 
-This operates as the constraint equation when users perform stable-swaps if we solve for *D* given a set of coins and hold this equality.  
+This operates as the constraint equation when users perform stable-swaps if we solve for $D$ given a set of coins and hold this equality.  
 
 <!-- TODO amplification coefficient -->
