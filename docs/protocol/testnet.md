@@ -10,10 +10,10 @@ You can find a table of each Nibiru testnet and its current status below. In ord
 | ------- | ---------------- | ------------------------ | ------- | ------ |
 | Testnet | nibiru-testnet-3 | Nibiru's default testnet | v0.13.0 | Active |
 
-{% hint style="info" %}
+::: tip
 You can see current status of the blockchain at the [Nibiru Block Explorer](https://explorer.testnet.nibiru.fi/).
 The explorer allows you to search through transactions, blocks, wallet addresses, and other on-chain data.
-{% endhint %}
+:::
 
 ### Blockchain Parameters
 
