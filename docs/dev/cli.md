@@ -7,7 +7,7 @@ A general introduction to the nibid cli along with a brief description of comman
 `nibid` is a command line client for the Nibiru network. Nibiru users can use `nibid` to send transactions to the Nibiru network and query the blockchain data.
 
 ::: tip
-See ["Joining Testnet"](./testnet.md) for instructions on installing `nibid`.
+See ["Nibid Setup"](../run-nodes/nibid-binary) for instructions on installing `nibid`.
 :::
 
 ### Working Directory

@@ -1,31 +1,33 @@
 ---
-description: >-
-  Testnets are testing instances of the Nibiru blockchain. Testnet tokens are
-  separate and distinct from real assets.
+order: 3
 ---
 
-# Joining Testnet                               <!-- omit in toc -->
+# Joining Testnet
 
-You can find a table of each Nibiru testnet and its current status below. In order to join a network, you'll need to use its corresponding version of the binary.
+Testnets are testing instances of the Nibiru blockchain. Testnet tokens are separate and distinct from real assets. In order to join a network, you'll need to use its corresponding version of the binary to [run a full node](./node-daemon).{synopsis}
 
-## Networks
+## Available Networks
+
+You can find a table of each Nibiru testnet and its current status below. 
 
 | Network | Chain ID         | Description              | Version | Status |
 | ------- | ---------------- | ------------------------ | ------- | ------ |
-| Testnet | nibiru-testnet-3 | Nibiru's default testnet | v0.13.0 | Active |
+| Testnet | nibiru-testnet-3 | Nibiru's default testnet | v0.15.0 | Active |
 
-{% hint style="info" %}
+::: tip
 You can see current status of the blockchain at the [Nibiru Block Explorer](https://explorer.testnet.nibiru.fi/).
 The explorer allows you to search through transactions, blocks, wallet addresses, and other on-chain data.
-{% endhint %}
+:::
 
-### Blockchain Parameters
+## Blockchain Parameters
 
 | Block Time | Unbonding Time | Voting Period |
 | ---------- | -------------- | ------------- |
 | 2 seconds  | 21 days        | 10 hours      |
 
-## Installation
+---
+
+## Pre-requisites 
 
 ### Minimum hardware requirements
 
@@ -40,135 +42,24 @@ sudo apt update
 sudo apt upgrade --yes
 ```
 
-### Install prerequisites
-
-```bash
-sudo apt install git build-essential ufw curl jq snapd make gcc --yes
-```
-
-### Install Golang
-
-```bash
-wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.18
-```
-
-The official installation instructions can be found at [go.dev/docs/install](https://go.dev/doc/install).
-
-After the installation open a new terminal to properly load go or run `source $HOME/.bashrc`
-
 ### Verify nibid version
 
-Please check for the correct version of the binary. If you have not installed `nibid`, please start with the instructions on [building the Nibiru binary](./building-the-nibiru-binary.md) or extract the archive received from the Nibiru team.
+Please check for the correct version of the binary. 
+
+::: tip
+If you have not installed `nibid`, please start with the instructions on building the [`nibid` binary](../nibid-binary).
+:::
 
 ```bash
 nibid version
-v0.13.0
+v0.15.0
 ```
 
-**Then choose systemd or Cosmovisor**
+---
 
-### Setup Cosmovisor (Option 1, recommended)
+## Cosmovisor 
 
-1. Install Cosmovisor
-
-    ```bash
-    git clone https://github.com/cosmos/cosmos-sdk
-    cd cosmos-sdk
-    git checkout cosmovisor/v1.2.0
-    make cosmovisor
-    cp cosmovisor/cosmovisor $GOPATH/bin/cosmovisor
-    cd $HOME
-    ```
-
-2. Set up enviromental variables
-
-    ```bash
-    export DAEMON_NAME=nibid
-    export DAEMON_HOME=$HOME/.nibid
-    source ~/.profile
-    ```
-
-3. Create required directories
-
-    ```bash
-    mkdir -p $DAEMON_HOME/cosmovisor/genesis/bin
-    mkdir -p $DAEMON_HOME/cosmovisor/upgrades
-    ```
-
-4. Add the genesis version of the binary (currently it is `v0.13`). You can verify your binary location with `which nibid` command. For the default location you can use the example below:
-
-    ```bash
-    cp ~/go/bin/nibid $DAEMON_HOME/cosmovisor/genesis/bin
-    ```
-
-5. Create the service for the Cosmovisor
-
-    ```bash
-    sudo tee /etc/systemd/system/cosmovisor-nibiru.service<<EOF
-    [Unit]
-    Description=Cosmovisor for Nibiru Node
-    Requires=network-online.target
-    After=network-online.target
-
-    [Service]
-    Type=exec
-    User=<your_user>
-    Group=<your_user_group>
-    ExecStart=/home/<your_user>/go/bin/cosmovisor run start --home /home/<your_user>/.nibid
-    Restart=on-failure
-    RestartSec=3
-    Environment="DAEMON_NAME=nibid"
-    Environment="DAEMON_HOME=/home/<your_user>/.nibid"
-    Environment="DAEMON_ALLOW_DOWNLOAD_BINARIES=false"
-    Environment="DAEMON_RESTART_AFTER_UPGRADE=true"
-    Environment="DAEMON_LOG_BUFFER_SIZE=512"
-    LimitNOFILE=65535
-
-    [Install]
-    WantedBy=multi-user.target
-    EOF
-    ```
-
-    Enable the service:
-
-    ```bash
-    sudo systemctl daemon-reload
-    sudo systemctl enable cosmovisor-nibiru
-    ```
-
-### nibid systemd (Option 2)
-
-1. Create a service file
-
-    ```bash
-    sudo tee /etc/systemd/system/nibiru.service<<EOF
-    [Unit]
-    Description=Nibiru Node
-    Requires=network-online.target
-    After=network-online.target
-
-    [Service]
-    Type=exec
-    User=<your_user>
-    Group=<your_user_group>
-    ExecStart=/home/<your_user>/go/bin/nibid start --home /home/<your_user>/.nibid
-    Restart=on-failure
-    ExecReload=/bin/kill -HUP $MAINPID
-    KillSignal=SIGTERM
-    PermissionsStartOnly=true
-    LimitNOFILE=65535
-
-    [Install]
-    WantedBy=multi-user.target
-    EOF
-    ```
-
-2. Enable the service
-
-    ```bash
-    sudo systemctl daemon-reload
-    sudo systemctl enable nibiru
-    ```
+Please follow the [`cosmovisor` setup instructions](./cosmovisor) if you haven't already.
 
 ## Init the Chain
 
@@ -215,14 +106,15 @@ v0.13.0
 6. Update block time parameters
 
     ```bash
-     sed -i 's/timeout_propose =.*/timeout_propose = "100ms"/g' $HOME/.nibid/config/config.toml
-     sed -i 's/timeout_propose_delta =.*/timeout_propose_delta = "500ms"/g' $HOME/.nibid/config/config.toml
-     sed -i 's/timeout_prevote =.*/timeout_prevote = "100ms"/g' $HOME/.nibid/config/config.toml
-     sed -i 's/timeout_prevote_delta =.*/timeout_prevote_delta = "500ms"/g' $HOME/.nibid/config/config.toml
-     sed -i 's/timeout_precommit =.*/timeout_precommit = "100ms"/g' $HOME/.nibid/config/config.toml
-     sed -i 's/timeout_precommit_delta =.*/timeout_precommit_delta = "500ms"/g' $HOME/.nibid/config/config.toml
-     sed -i 's/timeout_commit =.*/timeout_commit = "1s"/g' $HOME/.nibid/config/config.toml
-     sed -i 's/skip_timeout_commit =.*/skip_timeout_commit = false/g' $HOME/.nibid/config/config.toml
+    CONFIG_TOML="$HOME/.nibid/config/config.toml"
+     sed -i 's/timeout_propose =.*/timeout_propose = "100ms"/g' $CONFIG_TOML
+     sed -i 's/timeout_propose_delta =.*/timeout_propose_delta = "500ms"/g' $CONFIG_TOML
+     sed -i 's/timeout_prevote =.*/timeout_prevote = "100ms"/g' $CONFIG_TOML
+     sed -i 's/timeout_prevote_delta =.*/timeout_prevote_delta = "500ms"/g' $CONFIG_TOML
+     sed -i 's/timeout_precommit =.*/timeout_precommit = "100ms"/g' $CONFIG_TOML
+     sed -i 's/timeout_precommit_delta =.*/timeout_precommit_delta = "500ms"/g' $CONFIG_TOML
+     sed -i 's/timeout_commit =.*/timeout_commit = "1s"/g' $CONFIG_TOML
+     sed -i 's/skip_timeout_commit =.*/skip_timeout_commit = false/g' $CONFIG_TOML
     ```
 
 7. Start your node (choose one of the options)
@@ -254,7 +146,9 @@ v0.13.0
 
     You can also use the testnet Faucet from the `#faucet` channel of the [Nibiru Chain Discord](https://discord.gg/sgPw8ZYfpQ).
 
-See the [validator docs](validators.md) on how to participate as a validator.
+::: tip
+See the [validator docs](../validators) on how to participate as a validator.
+:::
 
 ## Example `nibid` commands
 
@@ -273,4 +167,6 @@ nibid tx perp open-position buy|sell pair leverage quoteAmt baseAmtLimit [flags]
 nibid tx perp open-position buy ubtc:unusd 10 100 0 --from <key> --home $HOME/.nibid
 ```
 
-See the [`nibid` CLI guide](../clients/modules/README.md) for the full list of `nibid` commands.
+For the full list of `nibid` commands, see:
+- The [`nibid` CLI introduction](../../dev/cli)
+- Nibiru [Module Reference](../../dev/x)

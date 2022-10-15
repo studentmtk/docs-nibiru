@@ -1,8 +1,10 @@
 ---
-description: Instructions running a validator node
+order: 1
 ---
 
 # Validating on Testnet
+
+Instructions running a validator node {synopsis}
 
 As the first step, please follow the [instructions to join the testnet](./testnet.md).
 

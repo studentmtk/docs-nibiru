@@ -156,9 +156,14 @@ module.exports = {
               path: "/run-nodes/nibid-binary.html"
             },
             {
-              title: "Joining Testnet",
+              title: "Running a Full Node",
               directory: true,
               path: "/run-nodes/testnet"
+            },
+            {
+              title: "For Validators",
+              directory: true,
+              path: "/run-nodes/validators"
             },
           ]
         },
