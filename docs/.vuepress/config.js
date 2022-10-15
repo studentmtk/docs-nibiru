@@ -50,7 +50,7 @@ module.exports = {
     // Logo in the top left corner, file in .vuepress/public/
     logo: {
       // src: "https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg",
-      src: "/nibi-logo-onwhite.png",
+      src: "/nibi-logo-on-white-pink.svg",
     },
     versions: [
       // {
@@ -116,9 +116,9 @@ module.exports = {
               path: "/dev/"
             },
             {
-              title: "Command-Line Interface (CLI)",
-              directory: false,
-              path: "/dev/cli.html"
+              title: "Nibid CLI",
+              directory: true,
+              path: "/dev/cli"
             },
             {
               title: "Module Reference",
@@ -145,16 +145,6 @@ module.exports = {
         {
           title: "Running Nodes",
           children: [
-            // {
-            //   title: "Nodes Overview",
-            //   directory: false,
-            //   path: "/run-nodes/"
-            // },
-            {
-              title: "Nibid Setup",
-              directory: false,
-              path: "/run-nodes/nibid-binary.html"
-            },
             {
               title: "Running a Full Node",
               directory: true,
@@ -205,7 +195,7 @@ module.exports = {
       }
     },
     footer: {
-      logo: "/nibi-logo-onwhite.png",
+      logo: "/nibi-logo-on-white-pink.svg",
       question: {
         text: "Chat with Nibiru developers on <a href='https://discord.gg/sgPw8ZYfpQ' target='_blank'>Discord</a>."
       },

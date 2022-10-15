@@ -1,65 +1,279 @@
-# ❓ FAQ
+# Python SDK
 
-Common questions about Nibiru and their answers {synopsis}
+Python-based client for interacting with the Nibiru blockchain. {synopsis}
 
-**FAQ Sections**
+The `nibiru` package allows you to index, query, and send transactions on the Nibiru Blockchain using Python. It provides access to market data for analysis, visualization, indicator development, algorithmic trading, strategy backtesting, bot programming, and related software engineering.
 
-* [General FAQ](faq.md#--general-faq)
-* [NIBI FAQ](faq.md#--nibi-faq)
-* [Validator FAQ](faq.md#--validator-faq)
+The package is intended to be used by coders, developers, technically-skilled traders and  data-scientists for building trading algorithms.
 
-## ❓ — General FAQ
+## User Guidelines
 
-### What is Nibiru?
+### Installation from `PyPI`
 
-**Nibiru** is a sovereign proof-of-stake blockchain, open-source platform, and member of a family of interconnected blockchains that comprise the Cosmos Ecosystem. Nibiru unifies leveraged derivatives trading, spot trading, staking, and bonded liquidity provision into a seamless user experience, enabling users of over 40 blockchains to trade with leverage using a suite of composable decentralized applications.
+```shell
+pip install nibiru  # requires Python 3.7
+```
 
-### Why is the protocol called Nibiru?
+You may need to update `pip` to get this to run:
 
-Nibiru associates closely with transition and diruption of an existing system.
+```shell
+python -m pip install --upgrade pip
+```
 
-* [Nibiru (Babylonian astronomy)](https://en.wikipedia.org/wiki/Nibiru\_\(Babylonian\_astronomy\)): Nibiru translates to “crossing” or “point of transition”.
-* [Nibiru Cataclysm](https://en.wikipedia.org/wiki/Nibiru\_cataclysm): “... the name ‘Nibiru’ is derived from the works of the ‘ancient astronaut’ writer Zecharia Sitchin and has interpretations Babylonian and Sumerian mythology...“
+### Documentation Website
 
-### How can I get involved?
+Documentation can be found here: [Nibiru-py documentation](https://nibiru-py.readthedocs.io/en/latest/index.html)
 
-* You can try out any of the protocols by following the [testnet instructions](broken-reference).
-* Coming soon: You can try out any of the protocols through their corresponding web applications at [app.nibiru.fi](https://app.nibiru.fi).
+- Learn more about opening and managing your spot and perp positions [here](https://nibiru-py.readthedocs.io/en/latest/nibiru.sdks.tx.html#nibiru-sdks-tx-package)
+- Learn about querying the chain using the Sdk [here](https://nibiru-py.readthedocs.io/en/latest/nibiru.clients.html#nibiru-clients-package)
+---
 
-## ❓ — NIBI FAQ
+## Development Guidelines
 
-### What is NIBI token used for?
+Our recommended setup is `pyenv` in combination with `poetry`.
 
-The security of the Nibiru blockchain relies on a set of validators to commit new blocks and participate in Tendermint BFT consensus by broadcasting votes that contain cryptographic signatures signed by each validator's private key. Validators stake **NIBI**, the protocol's native token used for gas, governance, and "mining". Users can delegate NIBI to validators that record and verify transactions in exchange for rewards.
+- `pyenv` is a tool for installing and managing Python interpreters. This will let you seamlessly switch between Python versions.
+- `poetry` is used for managing virtual environments, dependency resolution, package installations, package building, and package publishing.
+- We assume you're on a Unix machine such as WSL2 Ubuntu, MacOS, or a common Linux distro.
 
-### Where can I buy NIBI and NUSD?
+Currently, `nibiru` is created with Python 3.9.13. It may be compatible with higher versions, but we only run end-to-end tests in 3.9.13.
 
-You simply need to have a [Keplr wallet](https://www.keplr.app/) to purchase NIBI and NUSD. This will also enable you to move assets between IBC-enabled blockchains. NIBI and NUSD can be purchased from liquidity pools on Nibi-Swap. You can also mint NUSD directly with USDC.
+### Setting up a professional dev environment with `pyenv` and `poetry`
 
-### How is the NUSD supply created?
+#### Pyenv for managing multiple Python interpreters
 
-Users mint NUSD by placing NIBI and any accepted form of collateral (such as USDC) into the system. In return, the protocol mints and gives an equivalent value in NUSD back to the user minus a small transaction fee. Similarly, an NUSD holder can **burn NUSD** in exchange for equivalent value of NIBI and collateral. This process is described in detail on the [Nibiru Stablecoin - NUSD](../content/stablecoin.md) page.
+If you're on MacOS or a common Linux distro, you can install `pyenv` with brew.
 
-### What is the release schedule of NIBI?
+```shell
+brew install pyenv
+```
 
-The token release schedule is described in the [Tokenomics page](../content/tokenomics.md).
+You'll then need to add the following snippet to your shell config, e.g. your `.bash_profile`, `.bashrc`, or `.zshrc`.
 
-### Where can I go to get other questions answered?
+```shell
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
+```
 
-The best place to get questions answered quickly is the [Nibiru Discord](https://discord.gg/cCbfXatEYs). For suggestions, issues, and feature requests on specific applications, the team is also response on GitHub: [github.com/NibiruChain](https://github.com/NibiruChain).
+After using `source` on your config or restarting the shell, you should have the `pyenv` root command.
 
-***
+The command use to install any version of python is `pyenv install`. Display additional info for this command with `pyenv install --help`.
 
-## ❓ — Validator FAQ
+```sh
+pyenv install 3.9.13 # example for nibiru
+```
 
-### What is a validator?
+Once you have a version installed, you can print out the versions on your machine with:
 
-Validators are responsible for committing new blocks and participating in consensus by broadcasting votes that contain cryptographic signatures signed by each validator's private key.
+```shell
+pyenv versions
+```
 
-### What does it mean to stake or delegate?
+```
+# example output
+  system
+* 3.9.13 (set by /home/realu/.python-version)
+  3.10.4
+```
 
-Validators stake NIBI Users can stake without being a validator by delegating NIBI Commission Staking rewards
+In this example, I have 2 different interpreters installed on my machine. The one with the `*` is currently set as my **global interpreter**. This is set manually using the `pyenv global` command.
 
-### How can I become a validator?
+```shell
+pyenv global 3.10.4   # switches the global interpreter to 3.10.4
+```
 
-There are instructions on how to set up various kinds of nodes in the [validator docs](../developer-docs/validators.md). Reach out to the team on [Discord](https://discord.gg/cCbfXatEYs) if you need assistance.
+You can verify this works as expected using `python --version`. You may be familiar with using `python3` as the command instead of `python`. With `pyenv`, this is not necessary.
+
+Additional usage and installation instructions can be found in the [pyenv repo](https://github.com/pyenv/pyenv).
+
+### Installing `poetry` for dependency resolution and publishing packages
+
+Reference: [Poetry docs](https://python-poetry.org/docs/)
+
+Poetry can be installed with both `curl` and `pip`. We recommended using `curl` so that it will be global to your machine.
+
+NOTE We highly, highly, highly recommend that you DO NOT use `brew` to install `poetry`.
+If you use `brew`, it's going to install directly to your system, which prevents you from being able to leverage `pyenv` to seamlessly switch between Python interpreters.
+
+```shell
+# installation with pip: recommended option in tandem with pyenv
+pip install poetry
+```
+
+```shell
+# For UNIX systems - installation with curl
+curl -sSL https://install.python-poetry.org/ | python -
+```
+
+After this installation command, add the `poetry` binary to the path in your shell config (if it's not done automatically).
+
+```shell
+export PATH=$PATH:$HOME/.poetry/bin
+```
+
+### Installing external dependencies
+
+The `nibiru` project is defined by its `pyproject.toml`. At the root of the repo, simply call:
+
+```shell
+poetry install
+```
+
+This will resolve dependencies between each of the project's packages and install them into a virtual environment.
+
+## Running tests
+
+#### Setting environment variables
+
+There's currently a "devnet" running in GCP that the CI workflows use. You can find these secrets at [this notion page](https://www.notion.so/nibiru/Resources-and-Repo-Configs-b31aa8074a2b419d80b0c946ed5efab0) if you have access to it or contact one of the `CODEOWNERS` (@Unique-Divine, @matthiasmatt, @nibiruheisenberg).
+This is useful so that you can run every part of the package code without needing to visit other repositories.
+
+Set up a `.env` file to set environment variables for the tests.
+The variables used in the CI build can be found in the `env` section of the [`pytests.yml` workflow](.github/workflows/pytests.yml):
+
+```yaml
+jobs:
+  tests:
+    env:
+      # https://www.notion.so/nibiru/Resources-and-Repo-Configs-b31aa8074a2b419d80b0c946ed5efab0
+      CHAIN_ID: ${{ secrets.CHAIN_ID }}
+      HOST: ${{ secrets.HOST }}
+      VALIDATOR_MNEMONIC: ${{ secrets.VALIDATOR_MNEMONIC }}
+      GRPC_PORT: ${{ secrets.GRPC_PORT }}
+      LCD_PORT: ${{ secrets.LCD_PORT }}
+```
+
+You'll need an `.env` configuration like this.
+
+```shell
+# Example configuration for the Nibiry Python SDK
+HOST="..."
+VALIDATOR_MNEMONIC="..."
+ORACLE_MNEMONIC="..."
+GRPC_PORT="..."
+LCD_PORT="..."
+CHAIN_ID="..."
+NETWORK_INSECURE=true
+```
+
+#### Running the tests with `poetry` + `pytest`
+
+After following the instructions for setting up `poetry`, you can run the tests with `poetry run pytest`:
+
+```shell
+poetry run pytest -p no:warnings # silences warnings
+```
+
+#### (option B). Install the `nibiru` package with `pip`
+
+  ```shell
+  # from local
+  # build and install
+  pip install .
+
+  # from local build
+  pip uninstall nibiru
+  pip install nibiru --no-index --find-links /path/to/nibiru/py-sdk/dist
+
+  # from pypi
+  pip uninstall nibiru
+  pip install nibiru
+  ```
+
+
+## Makefile and Protocol Buffers
+
+See the [NibiruChain/sdk-proto-gen repository](https://github.com/NibiruChain/sdk-proto-gen).
+### Generating types wth protobuf
+
+The objective is to run `make proto-gen`, which simply executes `scripts/protocgen.sh`.
+
+In order to do this, you'll need to install a few packages on your system.
+
+```shell
+python -m pip install --user grpcio-tools
+pip install mypy-protobuf
+```
+
+If you get a permissions error such as
+
+```
+rm: cannot remove 'proto/proto/epochs/query.proto': Permission denied
+```
+
+call `sudo chown -R [USER-NAME] proto` using the name of user directory.
+You can find the value for `[USER-NAME]` quickly by running `whoami`. In other words, this should work:
+
+```shell
+sudo chown -R $(whoami) proto
+```
+
+You're done generating types once you've successfully called
+
+```shell
+make proto-gen
+poetry build # equivalently, you can run `python -m build`
+```
+
+## Linting
+
+Enable git hook which will perform linting before each commit:
+
+```shell
+poetry run pre-commit install
+```
+
+This will keep your code clean.
+
+## Gotchas
+
+The `protobuf` package must be version 3.20.x or lower. Otherwise, the following error appears at runtime.
+
+```
+nibiru/clients/__init__.py:1: in <module>
+    from nibiru.clients.dex import Dex  # noqa
+nibiru/clients/dex.py:8: in <module>
+    from nibiru.proto.dex.v1 import query_pb2 as dex_type
+nibiru/proto/dex/v1/query_pb2.py:16: in <module>
+    from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
+../../../anaconda3/envs/divine/lib/python3.9/site-packages/google/api/annotations_pb2.py:30: in <module>
+    from google.api import http_pb2 as google_dot_api_dot_http__pb2
+../../../anaconda3/envs/divine/lib/python3.9/site-packages/google/api/http_pb2.py:48: in <module>
+    _descriptor.FieldDescriptor(
+../../../anaconda3/envs/divine/lib/python3.9/site-packages/google/protobuf/descriptor.py:560: in __new__
+    _message.Message._CheckCalledFromGeneratedFile()
+E   TypeError: Descriptors cannot not be created directly.
+E   If this call came from a _pb2.py file, your generated code is out of date and must be regenerated with protoc >= 3.19.0.
+E   If you cannot immediately regenerate your protos, some other possible workarounds are:
+E    1. Downgrade the protobuf package to 3.20.x or lower.
+E    2. Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python (but this will use pure-Python parsing and will be much slower).
+E
+E   More information: https://developers.google.com/protocol-buffers/docs/news/2022-05-06#python-updates
+```
+
+## Usage instructions for publishing.
+
+You specify updates to publish using the commit (or PR) title with `bump-[version-keyword]`.
+For the `poetry version` command, ysing any bump rule with a valid semver string will change the version inside `pyproject.toml`. For example,
+
+```
+poetry version patch # moves from x.y.14 to x.y.15
+poetry version minor # moves from x.5.z to x.6.0
+poetry version major # moves from 3.y.z to 4.0.0
+```
+The list of bump rules includes:
+patch, minor, major, prepatch, preminor, premajor, prerelease.
+
+So the list of available keywords you an put in a PR includes
+- `bump-patch`:
+- `bump-patch`: 0.0.0 → 0.0.1
+- `bump-minor`: 0.0.* → 0.1.0
+- `bump-major`: 0.*.* → 1.0.0
+- `bump-prepatch`: 0.0.0 → 0.0.1-alpha0
+- `bump-prerelease`: equivalent to `bump-prepatch`
+- `bump-preminor`: 0.0.* → 0.1.0-alpha0
+- `bump-premajor`: 0.*.* → 1.0.0-alpha0
+
+These guidelines are in the release.yml for future reference.

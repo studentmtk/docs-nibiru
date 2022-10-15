@@ -19,7 +19,7 @@ Rather than having to do stressful DevOps tasks late at night, it's better if yo
 ## Cosmovisor Setup (Option 1, recommended)
 
 ::: tip
-If you have not installed `nibid`, please start with the instructions on building the [`nibid` binary](../nibid-binary).
+If you have not installed `nibid`, please start with the instructions on building the [`nibid` binary](../../dev/cli/nibid-binary).
 :::
 
 ::: warning

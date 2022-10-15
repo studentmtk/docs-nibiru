@@ -1,9 +1,12 @@
-# ⚙️ Building the Nibiru Binary
+---
+order: 1
+---
+
+# ⚙️ Building the Nibid Binary
 
 Instructions on building and installing the `nibid` binary. `nibid` is a command line client for the Nibiru network. Nibiru users can use nibid to send transactions to the Nibiru network and query the blockchain data.{synopsis}
 
-
-- [⚙️ Building the Nibiru Binary](#️-building-the-nibiru-binary)
+- [⚙️ Building the Nibid Binary](#️-building-the-nibid-binary)
   - [Install Go](#install-go)
   - [Install make and gcc](#install-make-and-gcc)
   - [Build and install the Nibiru binary](#build-and-install-the-nibiru-binary)
@@ -86,8 +89,8 @@ You'll need Docker to run commands that use external containers like `make proto
 
 #### [What's a node?][page-node-daemon]
 
-[page-cosmovisor]: ./testnet/cosmovisor
-[page-testnet]: ./testnet/testnet
-[page-validator]: ./validators
-[page-node-daemon]: ./testnet/node-daemon
-[page-cli]: ../dev/cli
+[page-cosmovisor]: ../../run-nodes/testnet/cosmovisor
+[page-testnet]: ../../run-nodes/testnet/testnet
+[page-validator]: ../../run-nodes/validators
+[page-node-daemon]: ../../run-nodes/testnet/node-daemon
+[page-cli]: ./

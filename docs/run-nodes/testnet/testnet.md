@@ -47,7 +47,7 @@ sudo apt upgrade --yes
 Please check for the correct version of the binary. 
 
 ::: tip
-If you have not installed `nibid`, please start with the instructions on building the [`nibid` binary](../nibid-binary).
+If you have not installed `nibid`, please start with the instructions on building the [`nibid` binary](../../dev/cli/nibid-binary).
 :::
 
 ```bash

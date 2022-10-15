@@ -6,6 +6,10 @@ order: 1
 
 The main endpoint of an SDK application is the **daemon client**, otherwise known as the **full-node** client. The full-node runs the state-machine, starting from a genesis file. It connects to peers running the same client in order to receive and relay transactions, block proposals and signatures. {synopsis}
 
+::: tip
+Running a node is different from running a Validator. In order to run a Validator, you must create and sync a node, and then upgrade it by staking.
+:::
+
 ## What it Means to Start a Full-Node
 
 For the Nibiru Chain application, the `nibid start` command starts a full-node.

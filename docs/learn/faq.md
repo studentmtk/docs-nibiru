@@ -1,16 +1,14 @@
----
-description: Common questions about Nibiru and their answers
----
-
 # ❓ FAQ
 
+Common questions about Nibiru and their answers. {synopsis}
+
 **FAQ Sections**
+- [FAQ — General](#faq--general)
+- [FAQ — NIBI Token](#faq---nibi-token)
+- [FAQ — Validators](#faq---validators)
 
-* [General FAQ](faq.md#--general-faq)
-* [NIBI FAQ](faq.md#--nibi-faq)
-* [Validator FAQ](faq.md#--validator-faq)
-
-## ❓ — General FAQ
+---
+## FAQ — General 
 
 ### What is Nibiru?
 
@@ -28,7 +26,8 @@ Nibiru associates closely with transition and diruption of an existing system.
 * You can try out any of the protocols by following the [testnet instructions](broken-reference).
 * Coming soon: You can try out any of the protocols through their corresponding web applications at [app.nibiru.fi](https://app.nibiru.fi).
 
-## ❓ — NIBI FAQ
+--- 
+## FAQ — NIBI Token
 
 ### What is NIBI token used for?
 
@@ -50,9 +49,9 @@ The token release schedule is described in the [Tokenomics page](../content/toke
 
 The best place to get questions answered quickly is the [Nibiru Discord](https://discord.gg/sgPw8ZYfpQ). For suggestions, issues, and feature requests on specific applications, the team is also response on GitHub: [github.com/NibiruChain](https://github.com/NibiruChain).
 
-***
+---
 
-## ❓ — Validator FAQ
+## FAQ — Validators
 
 ### What is a validator?
 

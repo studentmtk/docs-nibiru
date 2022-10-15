@@ -1,6 +1,8 @@
-# Production deployment
+# deploy.sh - Production deployment
 
 BUILD_PATH=".vuepress/dist"
+
+set -e
 
 npm run build
 # echo nibiru.fi > dist/CNAME
