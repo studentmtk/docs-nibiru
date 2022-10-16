@@ -1,0 +1,32 @@
+name: ⛓️ Tests
+
+on: 
+  pull_request:
+    branches: ["main", "release/*"]
+  push:
+    branches: ["main"]
+  
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref }}
+  cancel-in-progress: ${{ ! (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/release/')) }}
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup NodeJS and npm
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: Install yarn using npm
+        run: npm install -g yarn
+      - name: Setup NodeJS with yarn caching
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "yarn"
+      - name: Install dependencies
+        run: cd docs && yarn
+      - name: Build the application
+        run: cd docs && yarn build

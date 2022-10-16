@@ -1,6 +1,6 @@
 const REPO = "Unique-Divine/test-doc-deploy"
 module.exports = {
-  theme: "cosmos",
+  theme: "@nibiruchain/vuepress-theme-cosmos",
   title: "Nibiru Chain",
   locales: {
     "/": {
@@ -50,8 +50,8 @@ module.exports = {
     //},
     // Logo in the top left corner, file in .vuepress/public/
     logo: {
-      // src: "https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg",
       src: "/nibi-logo-on-white-pink.svg",
+      // src: "https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg",
     },
     versions: [
       // {

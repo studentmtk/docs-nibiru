@@ -1027,13 +1027,21 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@cosmos-ui/vue@^0.35.0":
-  version "0.35.0"
-  resolved "https://registry.npmjs.org/@cosmos-ui/vue/-/vue-0.35.0.tgz"
-  integrity sha512-WTCJBWSoiDckgvXWPByKkQ7ZVSf9LSMsizIAHBnsi0Zp3GOaEqPNBpgjGt2JEhpDPr7+YwyIgmqQ0S3D+Hq5iQ==
+"@mrmlnc/readdir-enhanced@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.npmjs.org/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz"
+  integrity sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g==
+  dependencies:
+    call-me-maybe "^1.0.1"
+    glob-to-regexp "^0.3.0"
+
+"@nibiruchain/cosmos-ui@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@nibiruchain/cosmos-ui/-/cosmos-ui-0.0.1.tgz#644a506421b13f2a66c9bca606032c88722d0e83"
+  integrity sha512-g6z7gx9BhUSxTasB4uhCi+8Z3HEmDqjm6aCqVGaTE9rZpAz9uA9tvRqNb6m7l0lSFuqT0Ftg21k77FipkV+JmQ==
   dependencies:
     algoliasearch "^4.1.0"
-    axios "^0.19.2"
+    axios "^0.21.1"
     clipboard-copy "^3.1.0"
     fuse.js "^3.4.6"
     hotkeys-js "^3.7.3"
@@ -1042,16 +1050,38 @@
     markdown-it "^10.0.0"
     prismjs "^1.19.0"
     querystring "^0.2.0"
+    react "^18.2.0"
     tiny-cookie "^2.3.1"
     vue "^2.6.10"
 
-"@mrmlnc/readdir-enhanced@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.npmjs.org/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz"
-  integrity sha512-bPHp6Ji8b41szTOcaP63VlnbbO5Ny6dwAATtY6JTjh5N2OLrb5Qk/Th5cRkRQhkWCt+EJsYrNB0MiL+Gpn6e3g==
+"@nibiruchain/vuepress-theme-cosmos@^0.0.185":
+  version "0.0.185"
+  resolved "https://registry.yarnpkg.com/@nibiruchain/vuepress-theme-cosmos/-/vuepress-theme-cosmos-0.0.185.tgz#634302ce74f64a58e0c697b7c612fa93febb2936"
+  integrity sha512-PqEhtKCZWYOYtSGX68PDaa6wYs3WnlxZOxl4HyTdJBAuVynV9emfaKl1w5rI/5NpLoXNE/qbw9YlgXY/zwApOw==
   dependencies:
-    call-me-maybe "^1.0.1"
-    glob-to-regexp "^0.3.0"
+    "@nibiruchain/cosmos-ui" "^0.0.1"
+    "@vuepress/plugin-google-analytics" "1.8.2"
+    algoliasearch "^4.2.0"
+    axios "^0.24.0"
+    cheerio "^1.0.0-rc.3"
+    clipboard-copy "^4.0.1"
+    entities "3.0.1"
+    esm "^3.2.25"
+    gray-matter "^4.0.2"
+    hotkeys-js "3.8.7"
+    jsonp "^0.2.1"
+    markdown-it "^12.0.0"
+    markdown-it-attrs "^4.0.0"
+    prismjs "^1.22.0"
+    pug "^3.0.1"
+    pug-plain-loader "^1.0.0"
+    stylus "^0.56.0"
+    stylus-loader "^3.0.2"
+    tiny-cookie "^2.3.2"
+    v-runtime-template "^1.10.0"
+    vuepress "^1.5.4"
+    vuepress-plugin-google-tag-manager "0.0.5"
+    vuepress-plugin-sitemap "^2.3.1"
 
 "@nodelib/fs.stat@^1.1.2":
   version "1.1.3"
@@ -2019,12 +2049,12 @@ aws4@^1.8.0:
   resolved "https://registry.npmjs.org/aws4/-/aws4-1.11.0.tgz"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
-axios@^0.19.2:
-  version "0.19.2"
-  resolved "https://registry.npmjs.org/axios/-/axios-0.19.2.tgz"
-  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+axios@^0.21.1:
+  version "0.21.4"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
+  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
   dependencies:
-    follow-redirects "1.5.10"
+    follow-redirects "^1.14.0"
 
 axios@^0.24.0:
   version "0.24.0"
@@ -4096,12 +4126,17 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@1.5.10, follow-redirects@^1.0.0:
+follow-redirects@^1.0.0:
   version "1.5.10"
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.5.10.tgz"
   integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
   dependencies:
     debug "=3.1.0"
+
+follow-redirects@^1.14.0:
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
+  integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
 
 follow-redirects@^1.14.4:
   version "1.14.7"
@@ -5233,7 +5268,7 @@ js-stringify@^1.0.2:
   resolved "https://registry.npmjs.org/js-stringify/-/js-stringify-1.0.2.tgz#1736fddfd9724f28a3682adc6230ae7e4e9679db"
   integrity sha1-Fzb939lyTyijaCrcYjCufk6Weds=
 
-js-tokens@^4.0.0:
+"js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
@@ -5534,6 +5569,13 @@ loglevel@^1.6.8:
   version "1.8.0"
   resolved "https://registry.npmjs.org/loglevel/-/loglevel-1.8.0.tgz"
   integrity sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==
+
+loose-envify@^1.1.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
+  integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
+  dependencies:
+    js-tokens "^3.0.0 || ^4.0.0"
 
 lower-case@^1.1.1:
   version "1.1.4"
@@ -7143,6 +7185,13 @@ rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react@^18.2.0:
+  version "18.2.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
+  integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
+  dependencies:
+    loose-envify "^1.1.0"
+
 "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.3, readable-stream@^2.3.6, readable-stream@~2.3.6:
   version "2.3.7"
   resolved "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.7.tgz"
@@ -8661,35 +8710,6 @@ vuepress-plugin-smooth-scroll@^0.0.3:
   integrity sha512-qsQkDftLVFLe8BiviIHaLV0Ea38YLZKKonDGsNQy1IE0wllFpFIEldWD8frWZtDFdx6b/O3KDMgVQ0qp5NjJCg==
   dependencies:
     smoothscroll-polyfill "^0.4.3"
-
-vuepress-theme-cosmos@^1.0.183:
-  version "1.0.183"
-  resolved "https://registry.npmjs.org/vuepress-theme-cosmos/-/vuepress-theme-cosmos-1.0.183.tgz"
-  integrity sha512-nLSL0YF6ar2yhZkDvp6o313xBSu/Zc3O3OxRsgLMZcKyWanNqyyh0jFrUqMZcjz7vylRRDth6C2/E0YeisFCbw==
-  dependencies:
-    "@cosmos-ui/vue" "^0.35.0"
-    "@vuepress/plugin-google-analytics" "1.8.2"
-    algoliasearch "^4.2.0"
-    axios "^0.24.0"
-    cheerio "^1.0.0-rc.3"
-    clipboard-copy "^4.0.1"
-    entities "3.0.1"
-    esm "^3.2.25"
-    gray-matter "^4.0.2"
-    hotkeys-js "3.8.7"
-    jsonp "^0.2.1"
-    markdown-it "^12.0.0"
-    markdown-it-attrs "^4.0.0"
-    prismjs "^1.22.0"
-    pug "^3.0.1"
-    pug-plain-loader "^1.0.0"
-    stylus "^0.56.0"
-    stylus-loader "^3.0.2"
-    tiny-cookie "^2.3.2"
-    v-runtime-template "^1.10.0"
-    vuepress "^1.5.4"
-    vuepress-plugin-google-tag-manager "0.0.5"
-    vuepress-plugin-sitemap "^2.3.1"
 
 vuepress@^1.5.4:
   version "1.9.7"
