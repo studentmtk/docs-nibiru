@@ -1,7 +1,7 @@
 {
   "name": "docs",
   "version": "1.0.0",
-  "description": "IBC-Go Documentation",
+  "description": "Nibiru Chain Documentation",
   "main": "index.js",
   "scripts": {
     "serve": "trap 'exit 0' SIGINT; vuepress dev --no-cache",
@@ -17,7 +17,7 @@
     "markdown-it": "^13.0.1",
     "markdown-it-katex": "^2.0.3",
     "vue": "^2.6.14",
-    "vuepress-theme-cosmos": "^1.0.183"
+    "@nibiruchain/vuepress-theme-cosmos": "^0.0.185"
   },
   "devDependencies": {
     "watchpack": "^2.2.0"

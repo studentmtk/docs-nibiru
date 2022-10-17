@@ -1,5 +1,6 @@
+const REPO = "Unique-Divine/test-doc-deploy"
 module.exports = {
-  theme: "cosmos",
+  theme: "@nibiruchain/vuepress-theme-cosmos",
   title: "Nibiru Chain",
   locales: {
     "/": {
@@ -9,12 +10,12 @@ module.exports = {
   base: process.env.VUEPRESS_BASE || "/",
   head: [
     ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" }],
-    // ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" }],
-    // ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" }],
+    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" }],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" }],
     ['link', { rel: "manifest", href: "/site.webmanifest" }],
     ['meta', { name: "msapplication-TileColor", content: "#2e3148" }],
     ['meta', { name: "theme-color", content: "#ffffff" }],
-    // ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon-svg.svg" }],
+    ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon-svg.svg" }],
     ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon.ico" }],
     ['link', { rel: "apple-touch-icon-precomposed", href: "/apple-touch-icon-precomposed.png" }],
     ["link",
@@ -36,8 +37,8 @@ module.exports = {
     },
   },
   themeConfig: {
-    repo: "VimDiesel-Cosmos/VimDiesel-Cosmos.github.io",
-    docsRepo: "VimDiesel-Cosmos/VimDiesel-Cosmos.github.io",
+    repo: REPO,
+    docsRepo: REPO,
     docsDir: "docs",
     editLinks: true,
     label: "hub", // options: sdk, ibc, hub
@@ -49,8 +50,8 @@ module.exports = {
     //},
     // Logo in the top left corner, file in .vuepress/public/
     logo: {
-      // src: "https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg",
       src: "/nibi-logo-on-white-pink.svg",
+      // src: "https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg",
     },
     versions: [
       // {
@@ -284,11 +285,11 @@ module.exports = {
             {
               title: "Contributing to the docs",
               url:
-                "https://github.com/NibiruChain/docs/blob/main/docs/DOCS_README.md"
+                `https://github.com/${REPO}/docs/blob/main/docs/DOCS_README.md`
             },
             {
               title: "Source code on GitHub",
-              url: "https://github.com/NibiruChain/docs/"
+              url: `https://github.com/${REPO}/docs/`
             }
           ]
         }
