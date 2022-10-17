@@ -11,7 +11,7 @@ REPO_URL="https://github.com/$ORG_NAME/$REPO_NAME"
 
 set -e
 
-npm run build
+yarn build
 echo nibiru.zone > $BUILD_PATH/CNAME
 
 cd $BUILD_PATH
