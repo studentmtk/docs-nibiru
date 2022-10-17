@@ -1,4 +1,4 @@
-# Protocol Documentation
+# proto - pricefeed
 <a name="top"></a>
 
 ## Table of Contents

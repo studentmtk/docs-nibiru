@@ -2,25 +2,26 @@
 
 ![](../img/nibi-perps-banner.png)
 
-- [Overview](perps-overview.md#overview)
-- [Mark Price and Index Price](perps-overview.md#mark-price-and-index-price)
-- [Leverage and Position Values](perps-overview.md#leverage-and-position-values)
-- [Margin and Margin Ratio](perps-overview.md#margin-and-margin-ratio)
-  - [Cross Margin versus Isolated Margin](perps-overview.md#cross-margin-versus-isolated-margin)
-- [Virtual Pools](perps-overview.md#virtual-pools)
-- [Market Specific Parameters](perps-overview.md#market-specific-parameters)
-  - [Trade Limit Ratio](perps-overview.md#trade-limit-ratio)
-  - [Fluctuation Limit Ratio](perps-overview.md#fluctuation-limit-ratio)
-  - [Max Oracle Spread Limit Ratio](perps-overview.md#max-oracle-spread-limit-ratio)
-- [Funding Payments](perps-overview.md#funding-payments)
-- [Liquidations](perps-overview.md#liquidations)
-- [Opening Positions](perps-overview.md#opening-positions)
-- [Perp: NIBI Token](perps-overview.md#perp-nibi-token)
-- [Perp VIP Trading Program](perps-overview.md#perp-vip-trading-program)
-- [What are the risks? How are they addressed?](perps-overview.md#what-are-the-risks-how-are-they-addressed)
-  - [Ecosystem Fund (EF)](perps-overview.md#ecosystem-fund-ef)
-  - [Safety Module](perps-overview.md#safety-module)
-  - [Treasury](perps-overview.md#treasury)
+**Table of Contents —  Nibi-Perps**
+  - [Overview](#overview)
+  - [Mark Price and Index Price](#mark-price-and-index-price)
+  - [Leverage and Position Values](#leverage-and-position-values)
+  - [Margin and Margin Ratio](#margin-and-margin-ratio)
+    - [Cross Margin versus Isolated Margin](#cross-margin-versus-isolated-margin)
+  - [Virtual Pools](#virtual-pools)
+  - [Market Specific Parameters](#market-specific-parameters)
+    - [Trade Limit Ratio](#trade-limit-ratio)
+    - [Fluctuation Limit Ratio](#fluctuation-limit-ratio)
+    - [Max Oracle Spread Limit Ratio](#max-oracle-spread-limit-ratio)
+  - [Funding Payments](#funding-payments)
+  - [Liquidations](#liquidations)
+  - [Opening Positions](#opening-positions)
+  - [Perp: NIBI Token](#perp-nibi-token)
+  - [Perp VIP Trading Program](#perp-vip-trading-program)
+  - [What are the risks? How are they addressed?](#what-are-the-risks-how-are-they-addressed)
+    - [Ecosystem Fund (EF)](#ecosystem-fund-ef)
+    - [Safety Module](#safety-module)
+    - [Treasury](#treasury)
 
 ---
 
@@ -35,9 +36,7 @@ While most perps exchanges are designed with off-chain order books, perp impleme
 * **Increase the number of unique traders on the platform.**
 * **Reduce the bleeding of the ecosystem fund**: One of the top priorities on the Nibiru Perps protocol it to keep the funding rates of the listed perps at parity to all other perpetual futures exchanges while monitoring the opportunity for arbitrageurs.
 
-Nibi-Perps is currently on private testnet. Here's a brief CLI demo.
-
-{% embed url="https://youtu.be/k-SBvGdYdng" %}
+Nibi-Perps is currently on private testnet.
 
 ## Mark Price and Index Price
 

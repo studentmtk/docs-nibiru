@@ -54,11 +54,11 @@ nibid keys add MyKey
 
 Enter and repeat the password, at least 8 characters, then you will get a new key.
 
-{% hint style="danger" %}
+::: warning
 **WARNING**
 
-write the seed phrase in a safe place! It is the only way to recover your account if you ever forget your password, and/or something happens to your local keystore.
-{% endhint %}
+Write the seed phrase in a safe place! It is the only way to recover your account if you ever forget your password, and/or something happens to your local keystore.
+:::
 
 #### Recover an existing key from seed phrase
 
@@ -86,7 +86,7 @@ The following example creates a multisig key with 3 sub-keys, and specify the mi
 nibid keys add <multisig-keyname> --multisig-threshold=2 --multisig=<signer-keyname-1>,<signer-keyname-2>,<signer-keyname-3>
 ```
 
-{% hint style="info" %}
+::: tip
 **TIP**
 
 `<signer-keyname>` can be the type of "local/offline/ledger", but not "multi" type.
@@ -94,7 +94,7 @@ nibid keys add <multisig-keyname> --multisig-threshold=2 --multisig=<signer-keyn
 If you don't have all the permission of sub-keys, you can ask for the `pubkey`'s to create the offline keys first, then you will be able to create the multisig key.
 
 Offline key can be created by `nibid keys add --pubkey`.
-{% endhint %}
+:::
 
 How to use multisig key to sign and broadcast a transaction, please refer to multisign.
 

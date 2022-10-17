@@ -1,5 +1,6 @@
+const REPO = "Unique-Divine/test-doc-deploy"
 module.exports = {
-  theme: "cosmos",
+  theme: "@nibiruchain/vuepress-theme-cosmos",
   title: "Nibiru Chain",
   locales: {
     "/": {
@@ -9,12 +10,12 @@ module.exports = {
   base: process.env.VUEPRESS_BASE || "/",
   head: [
     ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" }],
-    // ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" }],
-    // ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" }],
+    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" }],
+    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" }],
     ['link', { rel: "manifest", href: "/site.webmanifest" }],
     ['meta', { name: "msapplication-TileColor", content: "#2e3148" }],
     ['meta', { name: "theme-color", content: "#ffffff" }],
-    // ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon-svg.svg" }],
+    ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon-svg.svg" }],
     ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon.ico" }],
     ['link', { rel: "apple-touch-icon-precomposed", href: "/apple-touch-icon-precomposed.png" }],
     ["link",
@@ -36,8 +37,8 @@ module.exports = {
     },
   },
   themeConfig: {
-    repo: "NibiruChain/docs",
-    docsRepo: "NibiruChain/docs",
+    repo: REPO,
+    docsRepo: REPO,
     docsDir: "docs",
     editLinks: true,
     label: "hub", // options: sdk, ibc, hub
@@ -49,8 +50,8 @@ module.exports = {
     //},
     // Logo in the top left corner, file in .vuepress/public/
     logo: {
+      src: "/nibi-logo-on-white-pink.svg",
       // src: "https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg",
-      src: "/nibi-logo-onwhite.png",
     },
     versions: [
       // {
@@ -65,28 +66,12 @@ module.exports = {
       auto: false,
       nav: [
         {
-          title: "About Nibiru",
-          path: "about",
+          title: "Nibiru Ecosystem",
           children: [
             {
               title: "Overview",
               path: "/",
             },
-            {
-              title: "Nibiru Blog",
-              path: "https://blog.nibiru.fi/"
-            },
-            {
-              title: "FAQ",
-              directory: false,
-              path: "/about/faq.html"
-            },
-          ]
-        },
-        {
-          title: "Nibiru Ecosystem",
-          path: "ecosystem",
-          children: [
             {
               title: "Nibi-Perps",
               directory: false,
@@ -113,49 +98,63 @@ module.exports = {
               path: "/ecosystem/gov"
             },
             {
+              title: "Nibiru Blog",
+              path: "https://blog.nibiru.fi/"
+            },
+            {
               title: "Block Explorer",
               path: "https://explorer.testnet.nibiru.fi/"
             },
           ]
         },
         {
-          title: "Protocol",
-          path: "protocol",
+          title: "Protocol Development",
+          path: "dev",
           children: [
             {
-              title: "Specification Overview",
+              title: "Development Overview",
               directory: false,
-              path: "/protocol/spec-overview.html"
+              path: "/dev/"
             },
             {
-              title: "Command-Line Interface (CLI)",
-              directory: false,
-              path: "/protocol/cli.html"
+              title: "Nibid CLI",
+              directory: true,
+              path: "/dev/cli"
             },
             {
               title: "Module Reference",
               directory: true,
-              path: "/protocol/x",
+              path: "/dev/x",
             },
             {
               title: "Nibiru Protobuf",
               directory: true,
-              path: "/protocol/protobuf",
-            },
-            {
-              title: "Joining Testnet",
-              directory: false,
-              path: "/protocol/testnet.html"
+              path: "/dev/protobuf",
             },
             {
               title: "TypeScript SDK — nibijs",
               directory: false,
-              path: "/protocol/nibijs.html"
+              path: "/dev/nibijs.html"
             },
             {
               title: "Python SDK",
               directory: false,
-              path: "/protocol/py-sdk.html"
+              path: "/dev/py-sdk.html"
+            },
+          ]
+        },
+        {
+          title: "Running Nodes",
+          children: [
+            {
+              title: "Running a Full Node",
+              directory: true,
+              path: "/run-nodes/testnet"
+            },
+            {
+              title: "For Validators",
+              directory: true,
+              path: "/run-nodes/validators"
             },
           ]
         },
@@ -167,6 +166,11 @@ module.exports = {
               title: "Tokenomics",
               directory: false,
               path: "/learn/tokenomics.html"
+            },
+            {
+              title: "FAQ",
+              directory: false,
+              path: "/learn/faq.html"
             },
             {
               title: "Glossary",
@@ -192,7 +196,7 @@ module.exports = {
       }
     },
     footer: {
-      logo: "/nibi-logo-onwhite.png",
+      logo: "/nibi-logo-on-white-pink.svg",
       question: {
         text: "Chat with Nibiru developers on <a href='https://discord.gg/sgPw8ZYfpQ' target='_blank'>Discord</a>."
       },
@@ -281,11 +285,11 @@ module.exports = {
             {
               title: "Contributing to the docs",
               url:
-                "https://github.com/NibiruChain/docs/blob/main/docs/DOCS_README.md"
+                `https://github.com/${REPO}/docs/blob/main/docs/DOCS_README.md`
             },
             {
               title: "Source code on GitHub",
-              url: "https://github.com/NibiruChain/docs/"
+              url: `https://github.com/${REPO}/docs/`
             }
           ]
         }

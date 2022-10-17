@@ -1,13 +1,17 @@
-# Command-Line Interface
+---
+order: 2
+---
 
-A general introduction to the nibid cli along with a brief description of commands and flags {synopsis}
+# Nibid Command-Line Interface (CLI)
+
+An introduction to the using the `nibid` CLI along with a brief description of commands and flags {synopsis}
 
 ## Introduction
 
 `nibid` is a command line client for the Nibiru network. Nibiru users can use `nibid` to send transactions to the Nibiru network and query the blockchain data.
 
 ::: tip
-See ["Joining Testnet"](./testnet.md) for instructions on installing `nibid`.
+See ["Nibid Setup"](./nibid-binary) for instructions on installing `nibid`.
 :::
 
 ### Working Directory
@@ -66,5 +70,5 @@ All POST commands have the following global flags:
 
 | **Subcommand**                   | **Description**                                           |
 | -------------------------------- | --------------------------------------------------------- |
-| [perp](./x/perp.md#cli)   | Perp subcommands for querying and opening positions, etc. |
-| [vpool](./x/vpool.md#cli) | Vpool subcommands for querying vpools.                    |
+| [perp](../x/perp.md#cli)   | Perp subcommands for querying and opening positions, etc. |
+| [vpool](../x/vpool.md#cli) | Vpool subcommands for querying vpools.                    |

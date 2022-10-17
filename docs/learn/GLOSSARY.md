@@ -8,10 +8,9 @@
     - [Blockchain](#blockchain)
     - [Cosmos Hub / Gaia](#cosmos-hub--gaia)
     - [Cosmos-SDK](#cosmos-sdk)
-    - [Cosmos Ecosystem](#cosmos-ecosystem)
     - [IBC Relayer](#ibc-relayer)
     - [Proof of Stake (PoS)](#proof-of-stake-pos)
-    - [Tendermint Consensus](#tendermint-consensus)
+    - [Tendermint Core & the Application Blockchain Interface (ABCI)](#tendermint-core--the-application-blockchain-interface-abci)
   - [Glossary — Nibi-Swap](#glossary--nibi-swap)
     - [Automated Market-Maker (AMM)](#automated-market-maker-amm)
     - [Swap](#swap)
@@ -43,10 +42,6 @@ The Cosmos Hub, also called Gaia, is the first blockchain created within the Cos
 
 An open-source framework for building multi-asset public blockchains like [Gaia](https://hub.cosmos.network/), [Binance Chain](https://docs.binance.org/), and [Juno](https://docs.junonetwork.io/juno/readme). Nibiru is built on the Cosmos-SDK. Check out the [Cosmos-SDK docs](https://docs.cosmos.network/main/intro/overview.html) for more information.
 
-### Cosmos Ecosystem
-
-Definition TODO
-
 ### IBC Relayer
 
 In the Inter-Blockchain Communication (IBC) Protocol, blockchains do not directly pass messages to each other over the network. Instead, relayers monitor for updates on open paths between sets of IBC enabled chains and then submits their own updates with specific message types to the counterparty chains. Clients are then used to track and verify the consensus state. For more information on IBC concepts like relayers, connections, packets, clients, and channels, visit [ibc.cosmos.network](https://ibc.cosmos.network/).
@@ -55,7 +50,30 @@ In the Inter-Blockchain Communication (IBC) Protocol, blockchains do not directl
 
 Proof-of-stake is a type of consensus mechanism used by blockchains to achieve distributed consensus. In proof-of-work, miners prove they have capital at risk by expending energy. In Nibiru proof-of-stake, validators explicitly stake capital in the form of NIBI. Staked NIBI acts as collateral that can be destroyed if the validator behaves dishonestly or lazily. Validators are responsible for creating new blocks, propagating blocks across the network, and verifying that blocks are valid. PoS is also
 
-### Tendermint Consensus
+### Tendermint Core & the Application Blockchain Interface (ABCI)
+
+**Tendermint Consensus** consists of two chief technical components: a blockchain consensus
+engine and a generic application interface. 
+
+| | | 
+| --- | ---| 
+| [Tendermint Core](https://docs.tendermint.com/) |  The consensus engine, called [Tendermint Core](https://docs.tendermint.com/), ensures that the same transactions are recorded on every machine in the same order. | 
+| [Application Blockchain Interface (ABCI)](https://docs.tendermint.com/master/spec/abci/) | The application interface, called the [Application Blockchain Interface (ABCI)](https://docs.tendermint.com/master/spec/abci/), enables the transactions to be processed in any programming language. | 
+
+The consensus engine, called
+[Tendermint Core](https://docs.tendermint.com/), ensures that the same transactions are recorded on every machine in the same order. 
+
+The application interface, called the [Application Blockchain Interface (ABCI)](https://docs.tendermint.com/master/spec/abci/), enables the transactions to be processed in any programming language.
+
+Tendermint has evolved to be a general purpose blockchain consensus engine that
+can host arbitrary application states. Since Tendermint can replicate arbitrary
+applications, it can be used as a plug-and-play replacement for the consensus
+engines of other blockchains. Evmos is such an example of an ABCI application
+replacing Ethereum's PoW via Tendermint's consensus engine.
+
+Another example of a cryptocurrency application built on Tendermint is the Cosmos
+network. Tendermint is able to decompose the blockchain design by offering a very
+simple API (ie. the ABCI) between the application process and consensus process.
 
 Tendermint Byzantine Fault Tolerant (BFT) consensus is a solution that packages the networking and consensus layers of a blockchain into a generic engine, allowing developers to focus on application development as opposed to the complex underlying protocol. Tendermint provides the equivalent of a web-server, database, and supporting libraries for blockchain applications written in any programming language.
 
@@ -126,4 +144,7 @@ Definition TODO
 
 ## References
 
-- BitMEX. Perpetual Contracts Guide. <https://www.bitmex.com/app/perpetualContractsGuide>
+- [Tendermint Core Docs](https://docs.tendermint.com)
+- [BitMEX. Perpetual Contracts Guide](https://www.bitmex.com/app/perpetualContractsGuide)
+- [Cosmos-SDK Docs](https://docs.cosmos.network)
+- [Inter-Blockchain Communication (IBC) Docs](https://ibc.cosmos.network/)
