@@ -1,27 +1,29 @@
-# 🤝 Nibi-Perps             
+# 🤝 Nibi-Perps
 
 ![](../img/nibi-perps-banner.png)
 
 **Table of Contents —  Nibi-Perps**
-  - [Overview](#overview)
-  - [Mark Price and Index Price](#mark-price-and-index-price)
-  - [Leverage and Position Values](#leverage-and-position-values)
-  - [Margin and Margin Ratio](#margin-and-margin-ratio)
-    - [Cross Margin versus Isolated Margin](#cross-margin-versus-isolated-margin)
-  - [Virtual Pools](#virtual-pools)
-  - [Market Specific Parameters](#market-specific-parameters)
-    - [Trade Limit Ratio](#trade-limit-ratio)
-    - [Fluctuation Limit Ratio](#fluctuation-limit-ratio)
-    - [Max Oracle Spread Limit Ratio](#max-oracle-spread-limit-ratio)
-  - [Funding Payments](#funding-payments)
-  - [Liquidations](#liquidations)
-  - [Opening Positions](#opening-positions)
-  - [Perp: NIBI Token](#perp-nibi-token)
-  - [Perp VIP Trading Program](#perp-vip-trading-program)
-  - [What are the risks? How are they addressed?](#what-are-the-risks-how-are-they-addressed)
-    - [Ecosystem Fund (EF)](#ecosystem-fund-ef)
-    - [Safety Module](#safety-module)
-    - [Treasury](#treasury)
+
+- [Overview](#overview)
+- [Mark Price and Index Price](#mark-price-and-index-price)
+- [Leverage and Position Values](#leverage-and-position-values)
+- [Margin and Margin Ratio](#margin-and-margin-ratio)
+  - [Cross Margin versus Isolated Margin](#cross-margin-versus-isolated-margin)
+- [Virtual Pools](#virtual-pools)
+- [Market Specific Parameters](#market-specific-parameters)
+  - [Trade Limit Ratio](#trade-limit-ratio)
+  - [Fluctuation Limit Ratio](#fluctuation-limit-ratio)
+  - [Max Oracle Spread Limit Ratio](#max-oracle-spread-limit-ratio)
+- [Funding Payments](#funding-payments)
+- [Liquidations](#liquidations)
+- [Liquidation Bad Debt vs Position Bad Debt](#liquidation-bad-debt-vs-position-bad-debt)
+- [Opening Positions](#opening-positions)
+- [Perp: NIBI Token](#perp-nibi-token)
+- [Perp VIP Trading Program](#perp-vip-trading-program)
+- [What are the risks? How are they addressed?](#what-are-the-risks-how-are-they-addressed)
+  - [Ecosystem Fund (EF)](#ecosystem-fund-ef)
+  - [Safety Module](#safety-module)
+  - [Treasury](#treasury)
 
 ---
 
@@ -31,10 +33,10 @@ Perps are the most popular financial instrument in the modern day crypto markets
 
 While most perps exchanges are designed with off-chain order books, perp implementations can differ greatly from exchange to exchange. The Nibiru blockchain powers a decentralized and fully on-chain perpetual futures exchange called **NibiPerps**. There are several open problems Nibiru seeks to address with this exchange:
 
-* **Minimize latency during periods of high volatility.**
-* **Minimize the imbalance in open interest.**
-* **Increase the number of unique traders on the platform.**
-* **Reduce the bleeding of the ecosystem fund**: One of the top priorities on the Nibiru Perps protocol it to keep the funding rates of the listed perps at parity to all other perpetual futures exchanges while monitoring the opportunity for arbitrageurs.
+- **Minimize latency during periods of high volatility.**
+- **Minimize the imbalance in open interest.**
+- **Increase the number of unique traders on the platform.**
+- **Reduce the bleeding of the ecosystem fund**: One of the top priorities on the Nibiru Perps protocol it to keep the funding rates of the listed perps at parity to all other perpetual futures exchanges while monitoring the opportunity for arbitrageurs.
 
 Nibi-Perps is currently on private testnet.
 
@@ -86,8 +88,8 @@ Another good way to think about margin ratio is as the inverse of a position's e
 
 ### Cross Margin versus Isolated Margin
 
-* In a **cross margin** model, collateral is shared between open positions that use the same settlement currency. All open positions then have a combined margin ratio.
-* With an **isolated margin** model, the margin assigned to each open position is considered a separate collateral account.
+- In a **cross margin** model, collateral is shared between open positions that use the same settlement currency. All open positions then have a combined margin ratio.
+- With an **isolated margin** model, the margin assigned to each open position is considered a separate collateral account.
 
 **Current implementation**: Nibi-Perps uses isolated margin on each trading pair. This means that excess collateral on one position is not affected by a deficit on another (and vice versa). Positions are siloed in terms of liquidation risks, so an underwater ETH:USD position won't have any effect on an open ATOM:USD position, for instance.
 
@@ -151,6 +153,16 @@ When a liquidator address sends a message to liquidate a position, the protocol 
 
 If this margin ratio is below the maintenance margin ratio, the liquidation message will close the position. This consists of opening a reverse position with a size equivalent to the one that is currently open, which brings the size to zero. A liquidation fee is taken out of the margin and distributed in some split (currently 50:50) between the Nibi-Perps Ecosystem Fund (Perp EF) and the liquidator. If any margin remains in the position after the liquidation fee is taken out, this remaining margin is sent back to the owner of the position. And if bad debt is created by the liquidation fee, it is payed by the Perp EF.
 
+## Liquidation Bad Debt vs Position Bad Debt
+
+Position bad debt accrues when the realized PnL of the position eats away all the margin and the position reaches a negative margin. In this case, the ecosystem fund covers the loss. Liquidation bad debt is when the remaining margin of the position isn't enough to cover the liquidator's service fee so the payment also comes out of the ecosystem fund.
+
+Two scenarios can happen which lead to bad debt:
+
+1. The remaining margin on the position is zero (meaning the realized PnL ate it all up). In this case, there is both positional bad debt and liquidation bad debt, since there is no margin remaining.
+
+2. The position has some remaining margin left after realizing PnL but not enough to cover the liquidator fee. In this case, all of the margin is used to cover the liquidator fee and the ecosystem fund pays the remainder. There is only liquidation bad debt.
+
 ## Opening Positions
 
 When opening a position, tokens are deposited and locked as **margin**. Under the hood, these tokens are stored with the **clearing house**, which uses the virtual pools for price discovery, converting the deposit into virtual assets.
@@ -177,7 +189,7 @@ The EF is is seeded at the genesis within an initial supply from the community t
 
 ::: tip
 You may see the Ecosystem Fund of Nibi-Perps referred to as the `PerpEF` in the technical documentation.
-::: 
+:::
 
 Using these revenue streams, **the EF steps in to pay funding payments to correct the imbalance paid between long and short traders**. If the mark and index prices differ substantially with a large aggregate position size, the EF may pay too much in funding.
 
