@@ -56,7 +56,7 @@ Proof-of-stake is a type of consensus mechanism used by blockchains to achieve d
 engine and a generic application interface. 
 
 | | | 
-| --- | ---| 
+| --- | --- | 
 | [Tendermint Core](https://docs.tendermint.com/) |  The consensus engine, called [Tendermint Core](https://docs.tendermint.com/), ensures that the same transactions are recorded on every machine in the same order. | 
 | [Application Blockchain Interface (ABCI)](https://docs.tendermint.com/master/spec/abci/) | The application interface, called the [Application Blockchain Interface (ABCI)](https://docs.tendermint.com/master/spec/abci/), enables the transactions to be processed in any programming language. | 
 

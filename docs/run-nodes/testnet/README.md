@@ -99,9 +99,17 @@ Please follow the [`cosmovisor` setup instructions](./cosmovisor) if you haven't
     ``` 
 -->
 
-4. Update persistent peers list in the configuration file `$HOME/.nibid/config/config.toml` with the ones from the persistent\_peers.txt.
+4. Update persistent peers list in the configuration file `$HOME/.nibid/config/config.toml`.
 
-    Navigate to the directory with the `persistent_peers.txt` file you've received from the Nibiru team manually and run
+    Save the following text in a file named `persistent_peers.txt`.
+
+    ```
+    37713248f21c37a2f022fbbb7228f02862224190@35.243.130.198:26656
+    ff59bff2d8b8fb6114191af7063e92a9dd637bd9@35.185.114.96:26656
+    cb431d789fe4c3f94873b0769cb4fce5143daf97@35.227.113.63:26656
+    ```
+
+    Navigate to the directory with the `persistent_peers.txt` file and run
 
     ```bash
     export PEERS=$(cat persistent_peers.txt| tr '\n' '_' | sed 's/_/,/g;s/,$//;s/^/"/;s/$/"/') && sed -i "s/persistent_peers = \"\"/persistent_peers = ${PEERS}/g" $HOME/.nibid/config/config.toml
