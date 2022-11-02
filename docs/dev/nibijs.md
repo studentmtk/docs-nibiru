@@ -31,7 +31,7 @@ The official TypeScript SDK for the Nibiru blockchain {synopsis}
 
 The NibiJS (`@nibiruchain/nibijs`) package makes it possible to interact with Nibiru from a Node.js or browser environment. `nibijs` provides simple abstractions for core data structures, serialization, key management, API requests, and the submission of transactions. 
 
-The `nibijs` source code can be found in the ["packages" directory](https://github.com/NibiruChain/ts-sdk/blob/main/packages).  The types and classes generated from Nibiru's `.proto` files are inside a separate `npm` package called `@nibiruchain/api`. 
+The `nibijs` source code can be found in the ["packages" directory](https://github.com/NibiruChain/ts-sdk/blob/main/packages).  The types and classes generated from Nibiru's `.proto` files are inside a separate `npm` package called `@nibiruchain/protojs`. 
 
 #### Table of Contents
 - [TypeScript SDK — nibijs](#typescript-sdk--nibijs)
@@ -52,18 +52,26 @@ To learn more about Nibiru, see [docs.nibiru.fi](https://docs.nibiru.fi)
 [npm-nibijs]: https://www.npmjs.com/package/@nibiruchain/nibijs
 
 ```
-npm install @nibiruchain/nibijs # or yarn add
+yarn add @nibiruchain/nibijs 
+# npm install @nibiruchain/nibijs # another option 
 ```
 
 ## Usage 
 
 The entrypoint for `nibijs` is the `Sdk` object, which is meant to mimic the root of a command line interface. It can be used for both queries and transactions.
 
-#### Example: Querying a block 
+#### Example: Querying the chain
 
 ```js
 import { Testnet, newSdk } from "@nibiruchain/nibijs"
 const sdk = newSdk(Testnet, myMnemonic)
+
+const balances = await sdk.query.bank.allBalances(address)
+console.log("balances: %o", balances)
+
+const allPools = await sdk.query.vpool.allPools()
+console.log("allPools: %o", allPools)
+
 const blockHeight = 1
 const block = sdk.tmClient.block(blockHeight)
 ```
@@ -88,11 +96,11 @@ const sdk = newSdk(Testnet, myMnemonic)
 let msgs: TxMessage[] = [
   Msg.perp.openPosition({
     tokenPair: pair,
-    baseAssetAmountLimit: "0",
-    leverage: "1",
-    quoteAssetAmount: "10",
+    baseAssetAmountLimit: 0,
+    leverage: 1,
+    quoteAssetAmount: 10,
     sender: fromAddr,
-    side: Side.BUY,
+    goLong: true,
   }),
   Msg.perp.addMargin({
     sender: fromAddr,
@@ -113,7 +121,7 @@ let txResp: DeliverTxResponse = await sdk.tx.signAndBroadcast(...msgs)
 | `tx`     | For signing and to submitting transactions given a set of `Msg` objects.
 | `wallet` | A simple wrapper around the Keplr wallet. This module will grow as support is added for other wallets (like MetaMask). |
 
-`@nibiruchain/api` provides types generated from the protocol buffers of the Cosmos-SDK, Tendermint Core, and Nibiru Chain. For most use cases, it won't be necessary to interact with this layer.
+`@nibiruchain/protojs` provides types generated from the protocol buffers of the Cosmos-SDK, Tendermint Core, and Nibiru Chain. For most use cases, it won't be necessary to interact with this layer.
 
 ---
 
@@ -139,13 +147,13 @@ TODO
     yarn build
     ```
 
-See [HACKING.md](./HACKING.md) for the full development guide. 
+See [HACKING.md](https://github.com/NibiruChain/ts-sdk/blob/main/HACKING.md) for the full development guide. 
 
 ---
 
 ## 🔓 License
 
-This software is licensed under the MIT license. See [LICENSE](./LICENSE) for full disclosure.
+This software is licensed under the MIT license. See [LICENSE](https://github.com/NibiruChain/ts-sdk/blob/main/LICENSE) for full disclosure.
 
 © 2022 Nibi, Inc.
 
