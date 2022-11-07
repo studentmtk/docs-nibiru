@@ -24,17 +24,15 @@ The team will receive 21% of the total token allocation, with 4.25% available 12
 
 ## Seed Investors (10%)
 
-Seed investors who contributed funds to the initial development and launch of Nibiru will receive an allocation of 1.75% of the total supply 12 months after genesis time with the remaining 5.25% vesting linearly over the following 36 months.
+Seed investors who contributed funds to the initial development and launch of Nibiru will receive an allocation of 2.5% of the total supply 12 months after genesis time with the remaining 7.5% vesting linearly over the following 36 months.
 
 ## Early Backers / Private (9%)
 
-Investors and strategic partners will receive an allocation of 12% (180M) of the total supply, with 3% (45M) available 12 months after genesis and the remaining 9% (135M) will vest linearly over the following 36 months, at a rate of 3,750,000 NIBI tokens per month.
+Investors and strategic partners will receive an allocation of 9% of the total supply, with 2.25% available 12 months after genesis and the remaining 6.75%  vesting linearly over the following 36 months.
 
-All of the private investors’ token allocation will be staked with validators, with the staked amount becoming available to private investors following the unlocking schedule.
+All of the private investors’ token allocation can be staked during the lock, which would result in liquid rewards to be used discretionarily.
 
-Investors will receive liquid rewards while the investors’ allocation is staked with a validator. The rewards can be used at the investors’ discretion. This gives investors the ability to either provide liquidity to the AMM or stake with validators.
-
-The proceeds from this sale will be used primarily to fund the Perps Ecosystem Fund.
+This gives investors the ability to either provide liquidity to the AMM or increase the staked amount.
 
 ## Community (60%)
 
