@@ -86,7 +86,7 @@ A user can call `Buyback` when there's too much collateral in the protocol accor
 The protocol has too much collateral. Here, "protocol" refers to the module account of the `x/stablecoin` module, and "too much" refers to the difference between the `collRatio` and `liqRatio`.
 
 For example, if there's 10M NUSD in circulation, the price of USDC collateral is 0.99 NUSD per USDC, and the protocol has 5M USDC, the `liqRatio` would be (5M \* 0.99) / 10M = 0.495.\
-Thus, if the collateral ratio, or `collRatio`, is less than 0.495, the an address with sufficient funds can call `Buyback`.
+Thus, if the collateral ratio, or `collRatio`, is less than 0.495, then an account with sufficient funds can call `Buyback`.
 
 #### How does a buyback work?
 
