@@ -10,14 +10,14 @@
     "build": "trap 'exit 0' SIGINT; vuepress build --no-cache",
     "postbuild": "./post.sh"
   },
-  "author": "",
+  "author": "Nibiru Chain",
   "license": "ISC",
   "dependencies": {
+    "@nibiruchain/vuepress-theme-cosmos": "^0.0.185",
     "glob-parent": "^5.1.2",
     "markdown-it": "^13.0.1",
     "markdown-it-katex": "^2.0.3",
-    "vue": "^2.6.14",
-    "@nibiruchain/vuepress-theme-cosmos": "^0.0.185"
+    "vue": "^2.6.14"
   },
   "devDependencies": {
     "watchpack": "^2.2.0"
