@@ -50,13 +50,13 @@ module.exports = {
     //},
     // Logo in the top left corner, file in .vuepress/public/
     logo: {
-      src: "/main/nibi-logo-on-white-pink.svg",
+      src: "/nibi-logo-on-white-pink.svg",
     },
     versions: [
-      {
-        "label": "main",
-        "key": "main"
-      },
+      // {
+      //   "label": "main",
+      //   "key": "main"
+      // },
     ],
     topbar: {
       banner: true
@@ -195,7 +195,7 @@ module.exports = {
       }
     },
     footer: {
-      logo: "/main/nibi-logo-on-white-pink.svg",
+      logo: "/nibi-logo-on-white-pink.svg",
       question: {
         text: "Chat with Nibiru developers on <a href='https://discord.gg/sgPw8ZYfpQ' target='_blank'>Discord</a>."
       },
