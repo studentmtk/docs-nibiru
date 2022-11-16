@@ -51,19 +51,18 @@ module.exports = {
     // Logo in the top left corner, file in .vuepress/public/
     logo: {
       src: "/nibi-logo-on-white-pink.svg",
-      // src: "https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg",
     },
     versions: [
-      // {
-      //   "label": "main",
-      //   "key": "main"
-      // },
+      {
+        "label": "main",
+        "key": "main"
+      },
     ],
     topbar: {
       banner: true
     },
     sidebar: {
-      auto: false,
+      auto: true,
       nav: [
         {
           title: "Nibiru Ecosystem",
