@@ -3,6 +3,7 @@
 ###############################################################################
 
 DOCS_OUTPUT?=/tmp/nibiru-docs
+DOCS_DOMAIN=docs.nibiru.fi
 
 # This builds a docs site for each branch/tag in `./docs/versions` and copies
 # each site to a version prefixed path. The last entry inside the `versions`
@@ -18,4 +19,5 @@ build-docs:
 		cp $(DOCS_OUTPUT)/$${path_prefix}/index.html $(DOCS_OUTPUT) ; \
 		cp $(DOCS_OUTPUT)/$${path_prefix}/404.html $(DOCS_OUTPUT) ; \
 	done < versions ;
+	@echo $(DOCS_DOMAIN) > $(DOCS_OUTPUT)/CNAME
 .PHONY: build-docs
