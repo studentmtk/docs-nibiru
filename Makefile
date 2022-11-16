@@ -13,8 +13,8 @@ DOCS_DOMAIN=docs.nibiru.fi
 build-docs:
 	@cd docs && \
 	yarn install --frozen-lockfile && \
-	yarn build ; \
-	mkdir -p $(DOCS_OUTPUT) ; \
-	cp -r .vuepress/dist/* $(DOCS_OUTPUT) ; \
+	yarn build && \
+	mkdir -p $(DOCS_OUTPUT) && \
+	cp -r .vuepress/dist/* $(DOCS_OUTPUT)
 	@echo $(DOCS_DOMAIN) > $(DOCS_OUTPUT)/CNAME
 .PHONY: build-docs
