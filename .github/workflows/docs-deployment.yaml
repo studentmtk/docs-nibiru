@@ -32,6 +32,9 @@ jobs:
           # We need to fetch full history so the backport branches for previous
           # versions will be available for the build.
           fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Build documentation
         run: |
           git config --global --add safe.directory "$PWD"
