@@ -1,4 +1,4 @@
-[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../nibijs.md) / QueryCmd
+[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../README.md) / QueryCmd
 
 # Class: QueryCmd
 
@@ -57,7 +57,7 @@ ___
 
 ### client
 
-• **client**: [`ExtendedQueryClient`](../nibijs.md#extendedqueryclient)
+• **client**: [`ExtendedQueryClient`](../README.md#extendedqueryclient)
 
 #### Implementation of
 

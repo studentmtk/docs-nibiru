@@ -26,6 +26,9 @@ cd ../.. # path back to the root
 yarn run ts-node scripts/moveFunction.ts 
 egrep -lRZ 'nibijs.md' $new_docs_dir/functions.md | xargs -0 -l sed -i -e 's/nibijs.md/functions.md/g'
 egrep -lRZ 'nibijs.md' $new_docs_dir/exports.md | xargs -0 -l sed -i -e 's/nibijs.md/exports.md/g'
+egrep -lRZ 'nibijs.md' $new_docs_dir/classes | xargs -0 -l sed -i -e 's/nibijs.md/README.md/g'
+egrep -lRZ 'nibijs.md' $new_docs_dir/enums | xargs -0 -l sed -i -e 's/nibijs.md/README.md/g'
+egrep -lRZ 'nibijs.md' $new_docs_dir/interfaces | xargs -0 -l sed -i -e 's/nibijs.md/README.md/g'
 
 # Cleanup
 rm -rf ts-sdk

@@ -1,4 +1,4 @@
-[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../nibijs.md) / PerpExtension
+[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../README.md) / PerpExtension
 
 # Interface: PerpExtension
 

@@ -1,4 +1,4 @@
-[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../nibijs.md) / Sdk
+[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../README.md) / Sdk
 
 # Class: Sdk
 
@@ -83,7 +83,7 @@ ___
 
 ### query
 
-• **query**: [`ExtendedQueryClient`](../nibijs.md#extendedqueryclient)
+• **query**: [`ExtendedQueryClient`](../README.md#extendedqueryclient)
 
 #### Implementation of
 

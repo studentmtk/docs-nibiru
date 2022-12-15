@@ -1,4 +1,4 @@
-[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../nibijs.md) / IEventLog
+[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../README.md) / IEventLog
 
 # Interface: IEventLog
 

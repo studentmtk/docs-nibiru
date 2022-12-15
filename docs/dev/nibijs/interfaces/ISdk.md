@@ -1,4 +1,4 @@
-[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../nibijs.md) / ISdk
+[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../README.md) / ISdk
 
 # Interface: ISdk
 
@@ -29,7 +29,7 @@ ___
 
 ### query
 
-• **query**: [`ExtendedQueryClient`](../nibijs.md#extendedqueryclient)
+• **query**: [`ExtendedQueryClient`](../README.md#extendedqueryclient)
 
 #### Defined in
 

@@ -1,4 +1,4 @@
-[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../nibijs.md) / BECH32\_PREFIX
+[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../README.md) / BECH32\_PREFIX
 
 # Enumeration: BECH32\_PREFIX
 

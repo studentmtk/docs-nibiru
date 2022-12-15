@@ -1,4 +1,4 @@
-[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../nibijs.md) / IQueryCmd
+[NibiJS Documentation - v0.8.3](../README.md) / [Exports](../README.md) / IQueryCmd
 
 # Interface: IQueryCmd
 
@@ -29,7 +29,7 @@ ___
 
 ### client
 
-• **client**: [`ExtendedQueryClient`](../nibijs.md#extendedqueryclient)
+• **client**: [`ExtendedQueryClient`](../README.md#extendedqueryclient)
 
 #### Defined in
 
