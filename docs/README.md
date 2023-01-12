@@ -1,8 +1,9 @@
-<!--
-title: Nibiru Chain Documentation
+---
+title: Docs
 footer:
-  newsletter: false
--->
+  newsletter: true
+canonicalUrl: https://docs.nibiru.fi
+---
 
 # Nibiru Chain
 
