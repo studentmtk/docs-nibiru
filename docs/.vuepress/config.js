@@ -2,6 +2,7 @@ const REPO = "NibiruChain/docs-nibiru"
 module.exports = {
   theme: "@nibiruchain/vuepress-theme-cosmos",
   title: "Nibiru Chain",
+  description: "Docs for Nibiru Chain, a DeFi hub powering an ecosystem of smart contract applications.",
   locales: {
     "/": {
       lang: "en-US"
@@ -14,6 +15,7 @@ module.exports = {
     ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" }],
     ['link', { rel: "manifest", href: "/site.webmanifest" }],
     ['meta', { name: "msapplication-TileColor", content: "#2e3148" }],
+    ['meta', {name: "google-site-verification", content: "Uj8rxJHITFhFY8jBVBQfiPt9JcLl77JMkR50e9t4qGM"}],
     ['meta', { name: "theme-color", content: "#ffffff" }],
     ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon-svg.svg" }],
     ['link', { rel: "icon", type: "image/svg+xml", href: "/favicon.ico" }],
@@ -186,18 +188,18 @@ module.exports = {
       chat: {
         title: "Discord",
         text: "Chat with Nibiru developers on Discord.",
-        url: "https://discord.gg/sgPw8ZYfpQ",
+        url: "https://discord.gg/nibiru",
         bg: "linear-gradient(225.11deg, #2E3148 0%, #161931 95.68%)"
       },
       github: {
         title: "Found an Issue?",
-        text: "Help us improve this page POGGERS by suggesting edits on GitHub."
+        text: "Help us improve this page by suggesting edits on GitHub."
       }
     },
     footer: {
       logo: "/nibi-logo-on-white-pink.svg",
       question: {
-        text: "Chat with Nibiru developers on <a href='https://discord.gg/sgPw8ZYfpQ' target='_blank'>Discord</a>."
+        text: "Chat with Nibiru developers on <a href='https://discord.gg/nibiru' target='_blank'>Discord</a>."
       },
       textLink: {
         text: "nibiru.fi",
@@ -222,7 +224,7 @@ module.exports = {
         },
         {
           service: "discord",
-          url: "https://discord.gg/sgPw8ZYfpQ"
+          url: "https://discord.gg/nibiru"
         },
         // {
         //   service: "reddit",
@@ -238,7 +240,7 @@ module.exports = {
         // }
       ],
       smallprint:
-        "[Terms and Conditions](/terms-and-conditions-nibiru.pdf) | [Privacy Policy](/privacy-policy-nibiru.pdf) | The development of [Nibiru](https://github.com/NibiruChain) is led primarily by Nibi, Inc.",
+        "[Terms and Conditions](/terms-and-conditions-nibiru.pdf) | [Privacy Policy](/privacy-policy-nibiru.pdf) | The development of [Nibiru Chain](https://github.com/NibiruChain) is led primarily by Nibi, Inc.",
       links: [
         {
           title: "Documentation",
@@ -266,7 +268,7 @@ module.exports = {
             },
             {
               title: "Discord Chat",
-              url: "https://discord.gg/sgPw8ZYfpQ"
+              url: "https://discord.gg/nibiru"
             },
             {
               title: "Nibiru blog",
@@ -275,6 +277,10 @@ module.exports = {
             {
               title: "Twitter",
               url: "https://twitter.com/NibiruChain"
+            },
+            {
+              title: "Newsletter",
+              url: "https://nibiruchain.substack.com/"
             },
           ]
         },
@@ -307,6 +313,10 @@ module.exports = {
       {
         hostname: "https://docs.nibiru.fi"
       }
-    ]
+    ], 
+    [
+      "vuepress-plugin-clean-urls",
+      { normalSuffix: "" }
+    ],
   ]
 };

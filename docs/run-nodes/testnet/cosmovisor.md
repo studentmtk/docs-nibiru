@@ -43,7 +43,7 @@ When using Cosmovisor, make sure that you do not have auto download of binaries 
     mkdir -p $DAEMON_HOME/cosmovisor/upgrades
     ```
 
-4. Add the genesis version of the binary (currently it is `v0.16.2`) to the `cosmovisor` directory. You can verify your binary location with `which nibid` command. For example:
+4. Add the genesis version of the binary (currently it is `v0.16.3`) to the `cosmovisor` directory. You can verify your binary location with `which nibid` command. For example:
 
     ```bash
     cp $(which nibid) $DAEMON_HOME/cosmovisor/genesis/bin
