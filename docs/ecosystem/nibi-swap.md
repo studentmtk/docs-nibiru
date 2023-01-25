@@ -57,25 +57,51 @@ $$
 
 If the asset reserse are not modified by liquidity providers, then `k` remains constant and the price changes solely based on trades since the asset weights also remain constant. This ensures that the price of the asset bought increases while the price of the asset sold decreases. The arbitrage opportunities guarantee that the prices offered by the pools move in conjunction with the rest of the market.
 
-## Providing Liquidity 
+## Providing Liquidity (Joining a Pool)
 
-Pools on Nibi-Swap fascilitate trades between pairs of fungible coins. Adding liquidity gives an account **pool shares**, also called LP shares or LP tokens. Anyone can become a **liquidity provider (LP)** by adding an equivalent value of tokens to the pool. Here, equivalent value more precisely means equivalent ratio of the reserves. 
+Pools on Nibi-Swap fascilitate trades between pairs of fungible coins.  Anyone can become a **liquidity provider (LP)** by adding an equivalent value of tokens to the pool. Here, equivalent value means equivalent ratio of the reserves. 
 
-For example, let's say there's a pool with two assets of equal weight defined by the following.
+For example, let's say there's a pool with two assets of equal weight. Its reserves are $r_A$ and $r_B$ and its total number of shares are $s_{\text{tot}}$.
 
-```ts
-totalShares = 1000
-reserves = {tokenA: 200, tokenB: 40}
-```
+$$ \text{pool} = \{ r_A = 200, r_B=40, s_{\text{tot}}=1000 \}$$
 
-In order to add 20 units of `tokenA` to the pool, i.e. 10% of the reserves, the same proportion of `tokenB` needs to be added to the reserves as well. The proportional change to the total number of shares would also be 10%. And if we assume equal token weights, this also implies a swap invariant value of `k = 8000`, resulting in the following pool. 
 
-```ts
-totalShares = 1100
-reserves = {tokenA: 220, tokenB: 44}
-```
+In order to add 20 units of `tokenA` to the pool, the same proportion of `tokenB` needs to be added to the reserves as well. Adding 20 to $r_A$ would grow the reserves by 10\%.
 
-The liquidity provider receives 100 `tokenA:tokenB` LP shares, which can be reclaimed for the underlying funds at any point,  and the swap invariant is now `k = 9680`. Pool shares are fungible tokens that quantitatively express ownership of a liquidity pool's reserves. They serve a similar purpose to ERC-20 shares of an [ERC-4626 tokenized vault](https://eips.ethereum.org/EIPS/eip-4626). 
+Adding liquidity gives an account **LP shares**, also called **LP tokens** or  **pool shares**. The total number of shares must grow by the same proportion as the reserves. We'll call this the **provided liquidity percentage** $\text{pct}_{LP}$. 
+
+$$ 
+\text{pct}_{LP} := \frac{\Delta r_a}{ r_a } 
+= \frac{ \Delta r_b }{ r_b }
+= \frac{ \Delta s_{\text{tot}} }{ s_{\text{tot}} }
+$$
+
+$$
+\text{LP}(\text{pool}, \text{pct}_{LP}) \to \text{pool}' = \{ r_A , r_B , s_{\text{tot}} \} \cdot (\text{pct}_{LP})
+$$
+
+$$
+\therefore\quad \text{pool}' = \{ r_A' = 220, r_B'=44, s_{\text{tot}}'=1100 \}
+$$
+
+In this example, the liquidity provider receives 100 LP shares, or pool shares, which can be reclaimed for the underlying funds at any point. Pool shares are fungible tokens that quantitatively express how much of a pool's reserves an LP has claim to. They serve a similar purpose to ERC-20 shares of an [ERC-4626 tokenized vault](https://eips.ethereum.org/EIPS/eip-4626). 
+
+
+::: tip
+The on-chain message for providing liquidity is called `MsgJoinPool`, so we sometimes refer to LPing as "joining the pool".
+:::
+
+**LPing increases the liquidity depth, or swap invariant**, because it increases the reserves.
+
+$$\begin{aligned}
+
+k & = r_A r_B = 200 * 40 = 8000 \\ 
+k_{LP} & = r_A' r_B' = r_A (1 + \text{pct}_{LP}) r_B (1 + \text{pct}_{LP}) = k (1 + \text{pct}_{LP})^2 \\ 
+k_{LP} & = k (1  + \text{pct}_{LP})^2 = 9680
+
+\end{aligned}$$
+
+
 
 ### Swap Fees
 
@@ -93,32 +119,40 @@ A Cosmos coin, or `sdk.Coin`, defines a token with a denomination and an amount.
 
 ## Stableswaps
 
-Given the proliferation of stablecoins about to reach the Cosmos ecosystem, the Nibiru AMM will support stableswap pools based on [Curve’s Stableswap](https://curve.fi/files/stableswap-paper.pdf) invariant. 
+Given the proliferation of stablecoins and stable pairs in the Cosmos ecosystem, the Nibi-Swap AMM will support pools based on [Curve’s Stableswap](https://curve.fi/files/stableswap-paper.pdf) curve. 
 
-$$
-\begin{aligned}
-\text{(constant-price invariant)} \quad& D = \sum_{i=1}^t x_i \quad\quad \\
-\text{(constant-product invariant)} \quad& \prod x_i = \left( \frac{D}{t} \right)^t 
-\end{aligned}
-$$
 
-The stableswap invariant operates like a constant-price curve when a portfolio of assets is balanced and tends toward behaving like a constant-product curve if the tokens lose peg.
+The stableswap curve operates like a constant-price curve when a portfolio of assets is balanced and tends toward behaving like a constant-product curve if the tokens lose peg.
 
-$D$ denotes the sum of all token quantities when they have an equal price.  
+$$\begin{aligned}
+
+\text{(constant-price)} \quad& \phi = \sum_{i=1}^n x_i \quad\quad \\
+\text{(constant-product)} \quad& \prod x_i = \left( \frac{\phi}{n} \right)^n 
+
+\end{aligned}$$
 
 <div align="center">
 
 |  Variable |  Description | 
 | :---: | ---  |
-| $A$  | amplification coefficient |
-| $\{x_i\}$  | set of coins |
+| $\phi$ | Liquidity depth. The  **liquidity depth $\phi$** denotes the sum of all token quantities when they have an equal price. |
+| $x_i$  | Reserve amount amount of coin $i$ |
+| $n$  | The total number of tokens. The number of elements in the set $\{ x_i \}$.
 
 </div>
 
+<!-- TODO image for constant product curve -->
+
+<!-- TODO image for constant price curve -->
+
+How strongly the stableswap curve behaves like a constant-price curve is expressed by a non-negative quantity called the **"Amplification", $A$**. When $A\to 0$, the curve behaves more like a constant product, and as $A \to \infty$, the curve acts more like a constant-sum.
+
+<img src="../img/amplification-coefficient-stableswap.gif" alt="Shows how a Stable Swap curve changes with different values for the amplification A." title="Shows how a Stable Swap curve changes with different values for the amplification A." >
+
+When changes occur to the reserves of a stableswap pool, we solve for the liquidity depth $\phi$ using the following this constraint equation:
+
 $$
-At^t \left( \sum_{i=1}^t x_i \right) + D = ADt^t + \frac{D^{t+1}}{t^t\left( \prod\limits_{i=1}^t x_i \right) } 
+An^n \left( \sum_{i=1}^n x_i \right) + \phi = A\phi n^n + \frac{\phi^{n+1}}{n^n\left( \prod\limits_{i=1}^n x_i \right) } 
 $$
 
-This operates as the constraint equation when users perform stable-swaps if we solve for $D$ given a set of coins and hold this equality.  
-
-<!-- TODO amplification coefficient -->
+This is done iteratively with [Newton's method](https://en.wikipedia.org/wiki/Newton%27s_method), which is useful for approximating roots, zeros, or intercepts of real-valued functions. It's particularly useful here because the constraint equation doesn't have a clear analytical solution. The implementation for this is inside the  [`SolveStableswapInvariant` function of dex/types/pool.go](https://github.com/NibiruChain/nibiru/blob/fc2e00ce9fb3193997560f3a966883590cfe4044/x/dex/types/pool.go#L399)
